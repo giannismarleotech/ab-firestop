@@ -1,0 +1,26 @@
+/* Consistent page introductions, including translated and narrow layouts. */
+.topbar.wrap .language-switch{gap:2px!important;min-width:0}
+@media(max-width:800px){.topbar.wrap .language-switch>a{width:44px;min-width:44px!important;margin:0}.topbar.wrap{gap:6px}}
+.page-head.wrap,.detail-head.wrap{text-align:center}
+.page-head.wrap{width:100%;margin-inline:0;padding-inline:max(24px,calc((100% - 1180px)/2));padding-block:clamp(46px,6vw,82px)}
+.page-head h1,.detail-head h1{max-width:1080px;margin-inline:auto;text-wrap:balance;overflow-wrap:normal;hyphens:auto}
+.page-head .eyebrow,.detail-head .eyebrow{margin-inline:auto}
+.page-head .lead,.detail-head .lead{max-width:680px;margin-inline:auto;margin-bottom:0;text-wrap:pretty}
+.page-head .project-back,.detail-head .back{display:inline-block;margin-bottom:24px}
+.page-head.project-head{margin-bottom:0}
+@media(max-width:600px){
+ .page-head.wrap,.detail-head.wrap{padding-inline:20px;padding-block:38px 42px}
+ .page-head h1,.detail-head h1{font-size:clamp(28px,7.2vw,40px);line-height:1.12;letter-spacing:-.045em;overflow-wrap:break-word;margin-bottom:22px}
+ .page-head .lead,.detail-head .lead{font-size:16px;line-height:1.65}
+ .page-head .eyebrow,.detail-head .eyebrow{font-size:10px;line-height:1.6;margin-bottom:20px}
+}
+/* The intro never controls page visibility or scrolling. CSS is a fail-safe. */
+.brand-intro{display:none}
+html.ab-intro .brand-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#fafaf8;pointer-events:none;animation:ab-intro-out 180ms ease 620ms forwards}
+.brand-intro-mark{position:relative;width:54px;height:94px}
+.brand-intro-mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.brand-intro-base{opacity:.12;filter:grayscale(1)}
+.brand-intro-flame{animation:ab-flame-ignite 580ms cubic-bezier(.2,.65,.3,1) both;transform-origin:50% 90%}
+@keyframes ab-flame-ignite{0%{clip-path:inset(100% 0 0);filter:drop-shadow(0 0 0 #e31b23);transform:scale(.92)}60%{filter:drop-shadow(0 0 9px #ef352b66)}100%{clip-path:inset(0 0 0);filter:drop-shadow(0 0 0 #e31b2300);transform:scale(1)}}
+@keyframes ab-intro-out{to{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){html.ab-intro .brand-intro{display:none}.brand-intro-flame{animation:none}}

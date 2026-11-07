@@ -1,0 +1,1 @@
+.cms-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;padding-top:40px;padding-bottom:40px}.cms-gallery figure{margin:0}.cms-gallery img{width:100%;height:auto;display:block}.cms-gallery figcaption{padding-top:12px;font-size:14px}

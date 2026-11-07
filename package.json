@@ -1,0 +1,10 @@
+{
+  "name": "ab-firestop-beheer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {"build": "node scripts/build.mjs", "test": "node --experimental-test-module-mocks --test test/*.test.mjs", "password": "node scripts/password.mjs", "dev": "node scripts/dev.mjs", "deploy": "netlify deploy --build --prod"},
+  "dependencies": {"@netlify/blobs": "11.1.8", "cheerio": "1.2.0", "sharp": "0.34.5"},
+  "devDependencies": {"netlify-cli": "^23.0.0"}
+}
