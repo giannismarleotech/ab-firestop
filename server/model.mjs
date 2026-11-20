@@ -9,7 +9,7 @@ export function validateContent(input,template){
   for(const [key,field] of Object.entries(template.fields)){
     const value=input.values?.[key]??field.value;
     if(typeof value!=='string'||value.length>12000)fail(400,'Een tekst is te lang.');
-    if(field.type==='image'&&value!==field.value&&!/^\/\.netlify\/functions\/media\?id=[a-f0-9-]{36}$/.test(value))fail(400,'Kies een foto uit de fotobibliotheek.');
+    if(field.type==='image'&&value!==field.value&&!/^\/(?:\.netlify\/functions|api)\/media\?id=[a-f0-9-]{36}$/.test(value))fail(400,'Kies een foto uit de fotobibliotheek.');
     values[key]=value;
     if(field.type==='image'){
       const alt=input.values?.[key+'-alt']??field.alt;
@@ -20,7 +20,7 @@ export function validateContent(input,template){
   const extras=input.extras??[];
   if(!Array.isArray(extras)||extras.length>40)fail(400,'Maximaal 40 extra foto’s per pagina.');
   return {values,extras:extras.map(x=>{
-    if(!x||!/^\/\.netlify\/functions\/media\?id=[a-f0-9-]{36}$/.test(x.src)||typeof x.alt!=='string'||x.alt.length>400)fail(400,'Ongeldige foto.');
+    if(!x||!/^\/(?:\.netlify\/functions|api)\/media\?id=[a-f0-9-]{36}$/.test(x.src)||typeof x.alt!=='string'||x.alt.length>400)fail(400,'Ongeldige foto.');
     return {src:x.src,alt:x.alt};
   })};
 }

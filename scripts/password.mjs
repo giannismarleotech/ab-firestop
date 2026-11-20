@@ -9,7 +9,7 @@ process.stdin.on('data',chunk=>{
       process.stdin.setRawMode(false);process.stdin.pause();
       if(input.length<12){console.error('Wachtwoord te kort.');process.exit(1);}
       const salt=randomBytes(16).toString('hex');
-      console.log('\nVul deze waarden in Netlify in, alleen voor de Functions-scope:');
+      console.log(process.argv[2]==='cloudflare'?'\nVul deze waarden in Cloudflare Pages in als versleutelde secrets (Production):':'\nVul deze waarden in Netlify in, alleen voor de Functions-scope:');
       console.log('AB_ADMIN_EMAIL=info@abfirestop.be');
       console.log('AB_ADMIN_PASSWORD_HASH='+salt+':'+scryptSync(input,salt,64).toString('hex'));
       console.log('AB_SESSION_SECRET='+randomBytes(32).toString('hex'));process.exit(0);

@@ -6,9 +6,8 @@ export function verifyPassword(password,encoded){
   if(!/^[a-f0-9]{32}$/.test(salt??'')||!/^[a-f0-9]{128}$/.test(hash??'')||typeof password!=='string'||password.length>200)return false;
   return timingSafeEqual(scryptSync(password,salt,64),Buffer.from(hash,'hex'));
 }
-export function settings(){
-  const env=process.env;
-  if(!env.AB_ADMIN_PASSWORD_HASH||!env.AB_SESSION_SECRET||env.AB_SESSION_SECRET.length<32)fail(503,'Het beheer moet nog veilig worden geactiveerd in Netlify.');
+export function settings(env=process.env){
+  if(!/^[a-f0-9]{32}:[a-f0-9]{128}$/.test(env.AB_ADMIN_PASSWORD_HASH??'')||typeof env.AB_SESSION_SECRET!=='string'||env.AB_SESSION_SECRET.length<32)fail(503,'Het beheer moet nog veilig worden geactiveerd bij de hostingprovider.');
   return {email:env.AB_ADMIN_EMAIL||'info@abfirestop.be',hash:env.AB_ADMIN_PASSWORD_HASH,secret:env.AB_SESSION_SECRET};
 }
 export function sameOrigin(req){if(req.headers.get('origin')!==new URL(req.url).origin)fail(403,'Deze aanvraag is niet toegestaan.');}
