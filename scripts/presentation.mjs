@@ -24,19 +24,19 @@ export function enhancePresentation($, {path, lang = 'nl'}) {
 
   const body = $('body').addClass('ab-experience');
   $('head link[rel="icon"],head link[rel="shortcut icon"],head link[rel="apple-touch-icon"]').remove();
-  $('head').append('<link rel="icon" href="/favicon.ico?v=real-fire6" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=real-fire6"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=real-fire6">');
+  $('head').append('<link rel="icon" href="/favicon.ico?v=relief7-final" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=relief7-final"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=relief7-final">');
   if (!$('link[data-ab-experience]').length) {
-    $('head').append('<link rel="stylesheet" href="/assets/experience.css?v=real-fire6" data-ab-experience>');
+    $('head').append('<link rel="stylesheet" href="/assets/experience.css?v=relief7-final" data-ab-experience>');
   }
   if (!$('script[data-ab-experience]').length) {
-    body.append('<script src="/assets/experience.js?v=real-fire6" data-ab-experience defer></script>');
+    body.append('<script src="/assets/experience.js?v=relief7-final" data-ab-experience defer></script>');
   }
 
-  const accent='<div class="fire-stage" data-fire-variant="accent" aria-hidden="true" data-presentation-only><div class="fire-aura"></div><canvas class="fire-canvas"></canvas></div>';
-  $('.cta').each((_,el)=>{if(!$(el).find('.fire-stage').length)$(el).append(accent);});
-  if (!$('script[data-ab-fire]').length) body.append('<script src="/assets/fire-scene.js?v=real-fire6" data-ab-fire defer></script>');
+  $('.fire-stage,script[data-ab-fire]').remove();
   if (!['index.html', 'en/index.html', 'fr/index.html'].includes(page)) return;
   body.addClass('ab-home');
+  $('#brand-intro,script[src*="brand-intro.js"]').remove();
+  if (!$('script[data-ab-heat]').length) body.append('<script src="/assets/heat-scene.js?v=relief7-final" data-ab-heat defer></script>');
   const text = copy[lang] || copy.nl;
 
   if (!$('.systems-section').length && $('.intro').length) {
@@ -54,12 +54,12 @@ export function enhancePresentation($, {path, lang = 'nl'}) {
   }
 
   const hero = $('.new-hero').first();
-  if (hero.length && !hero.find('.fire-stage').length) {
-    const stage=$('<div class="fire-stage" aria-hidden="true" data-presentation-only><div class="fire-aura"></div><canvas class="fire-canvas"></canvas><div class="fire-emblem"><img src="/assets/beeldmerk.png" alt="" width="490" height="729" decoding="async"></div></div>');
+  if (hero.length && !hero.find('.heat-stage').length) {
+    const stage=$('<div class="heat-stage" aria-hidden="true" data-presentation-only><div class="heat-fallback"></div><canvas class="heat-canvas"></canvas><div class="heat-joint"></div></div>');
     hero.find('.hero-content').after(stage);
     if (!stage.parent().length) hero.append(stage);
+    hero.append('<div class="hero-light" aria-hidden="true" data-presentation-only></div>');
   }
-  $('.process-band>.wrap').each((_,el)=>{if(!$(el).find('.fire-stage').length)$(el).append(accent);});
   const photos=['interbad-brugge-0','aquafin-gent-4','kortemark-4','q8-gent-1','abattoir-molenbeek-2','aquafin-gent-10'];
   $('.service-row').each((index,el)=>{
     if ($(el).find('.service-visual').length) return;
