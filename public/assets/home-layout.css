@@ -1,0 +1,245 @@
+/* Homepage */
+.ab-home .hero-stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: clamp(510px, 44vw, 700px);
+  background: #202426;
+  overflow: hidden;
+}
+
+.ab-home .hero-stage .hero-media.hero-media--fire {
+  position: absolute;
+  inset: 0;
+  display: block;
+  height: auto;
+  margin: 0;
+  background: #202426;
+  animation: none;
+}
+
+.ab-home .hero-stage .hero-media--fire > .hero-background {
+  height: 100%;
+  object-position: 52% 42%;
+  filter: saturate(.86);
+}
+
+.ab-home .hero-stage .hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, #101517f5 0%, #101517c9 34%, #1015171c 84%),
+    linear-gradient(0deg, #1015178c, transparent 45%);
+}
+
+.ab-home .hero-stage .hero-content {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding-block: 65px 76px;
+}
+
+.ab-home .hero-stage .hero-content > .eyebrow {
+  color: #fff;
+  border-left: 3px solid #f3414d;
+  padding-left: 14px;
+  max-width: 43rem;
+}
+
+.ab-home .hero-stage h1 {
+  font-size: clamp(62px, 7.4vw, 116px);
+  color: #fff;
+  max-width: min(920px, 100%);
+  overflow-wrap: anywhere;
+}
+
+.ab-home .hero-stage h1 em { color: #ff646e; }
+
+.ab-home .hero-stage .lead {
+  max-width: 34rem;
+  margin: 22px 0;
+  color: #fff;
+}
+
+.ab-home .hero-stage .actions {
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 12px 22px;
+}
+
+.ab-home .hero-stage .actions .button.outline {
+  color: #fff;
+  border-color: #fff9;
+}
+
+.ab-home .hero-stage .actions .button.outline:hover { color: #ff9298; }
+
+.ab-home .hero-stage .hero-image-note.hero-fire-signature {
+  position: absolute;
+  inset: auto 0 0 auto;
+  width: clamp(235px, 23vw, 350px);
+  height: 142px;
+  min-height: 0;
+  padding: 20px 20px 20px 110px;
+  justify-content: center;
+  background: #141819;
+}
+
+.ab-home .hero-stage .hero-fire-signature > strong { font-size: 27px; }
+
+.ab-home .hero-stage .hero-fire-signature {
+  /* Keep the video behind its emblem and caption inside the signature. */
+  isolation: isolate;
+}
+
+.ab-home .hero-stage .hero-fire-signature > .fire-film {
+  inset: 0 auto 0 0;
+  width: 94px;
+  min-height: 0;
+}
+.ab-home .hero-stage .hero-fire-signature .fire-film-video {
+  inset: 0;
+  height: 100%;
+  transform: none;
+}
+.ab-home .hero-stage .hero-fire-signature .fire-emblem {
+  width: 43px;
+  height: 74px;
+}
+
+body.ab-experience.ab-home .expertise {
+  background: #f3f4f4;
+  padding-block: clamp(50px, 7vw, 100px);
+}
+
+body.ab-experience.ab-home .expertise > .wrap { gap: 25px; }
+
+body.ab-experience.ab-home .expertise .service-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  background: white;
+  box-shadow: inset 0 -3px #dce0e1;
+  transition: box-shadow .25s ease;
+}
+
+body.ab-experience.ab-home .expertise .service-row:hover {
+  box-shadow: inset 0 -3px #d7212e;
+}
+
+body.ab-experience.ab-home .expertise .service-row .num { display: none; }
+body.ab-experience.ab-home .expertise .service-row > div:not(.service-visual) {
+  padding: 22px 24px 27px;
+}
+body.ab-experience.ab-home .expertise .service-visual {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+body.ab-experience.ab-home .expertise .service-row h3 { font-size: clamp(30px, 3vw, 40px); }
+
+.ab-home .expertise + .cta {
+  width: 100%;
+  margin: 0;
+  padding: clamp(32px, 5vw, 70px) max(24px, calc((100% - 1320px) / 2));
+  border: 0;
+  border-radius: 0;
+  background: #a9222d;
+  color: #fff;
+}
+
+.ab-home .expertise + .cta .eyebrow,
+.ab-home .expertise + .cta h2,
+.ab-home .expertise + .cta p { color: #fff; }
+
+.ab-home .expertise + .cta .button {
+  background: #fff;
+  border-color: #fff;
+  color: #941c25;
+}
+
+.ab-home .expertise + .cta .button:hover { background: #f8e5e6; }
+
+.ab-home .home-projects {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px 22px;
+}
+
+.ab-home .home-projects .project-card:first-child {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  background: #22282a;
+}
+
+.ab-home .home-projects .project-card:first-child .project-card-photo {
+  height: 100%;
+  min-height: 380px;
+}
+
+.ab-home .home-projects .project-card:nth-child(n+2) .project-card-photo {
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+.ab-home .home-projects .project-card:first-child .project-card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: clamp(24px, 4vw, 65px);
+}
+
+.ab-home .home-projects .project-card:first-child h3 {
+  color: #fff;
+  font-size: clamp(44px, 5vw, 76px);
+}
+
+.ab-home .home-projects .project-card:first-child .project-card-details p {
+  color: #e1e5e5;
+  margin: 0 0 24px;
+}
+
+.ab-home .home-projects .project-card:first-child .project-card-meta,
+.ab-home .home-projects .project-card:first-child .project-card-link { color: #fff; }
+.ab-home .home-projects .project-card:nth-child(n+2) p { display: none; }
+.ab-home .home-projects .project-card:nth-child(n+2) h3 {
+  font-size: clamp(26px, 3vw, 38px);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 901px) {
+  .ab-home .hero-stage .hero-image-note.hero-fire-signature { width: 330px; }
+}
+
+@media (max-width: 900px) {
+  .ab-home .hero-stage .hero-content { padding-bottom: 145px; }
+  .ab-home .hero-stage .hero-image-note.hero-fire-signature {
+    height: 105px;
+    padding: 14px 15px 14px 78px;
+  }
+  .ab-home .hero-stage .hero-fire-signature > .fire-film { width: 66px; }
+  .ab-home .home-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .ab-home .hero-stage { min-height: 0; }
+  .ab-home .hero-stage .hero-media::after {
+    background: linear-gradient(90deg, #101517ee, #1015179e);
+  }
+  .ab-home .hero-stage .hero-content { padding-top: 46px; }
+  .ab-home .hero-stage h1 { font-size: clamp(43px, 11vw, 65px); }
+  .ab-home .home-projects .project-card:first-child { grid-template-columns: 1fr; }
+  .ab-home .home-projects .project-card:first-child .project-card-photo {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.ab-experience.ab-home .expertise .service-row { transition: none; }
+}
