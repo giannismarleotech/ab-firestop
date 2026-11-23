@@ -1,6 +1,8 @@
 import { readdir,readFile,writeFile } from 'node:fs/promises';
 import { load } from 'cheerio';
 import { enhancePresentation } from './presentation.mjs';
+import { enhancePhotoStory } from './photo-story.mjs';
+import { enhanceFirePresentation } from './fire-presentation.mjs';
 import { buildIcons } from './build-icons.mjs';
 const rewriteCopy=value=>value
   .replace(/specialisten/gi,word=>word===word.toUpperCase()?'SPECIALISATIE':word[0]==='S'?'Specialisatie':'specialisatie')
@@ -32,6 +34,8 @@ for(const prefix of ['', 'fr/', 'en/']){
     $('meta[name="description"]').each((_,el)=>$(el).attr('content',rewriteCopy($(el).attr('content')||'')));
     $('body').attr('data-cms-page',path).append('<script src="/assets/analytics.js" defer></script>');
     enhancePresentation($,{path,lang:prefix.slice(0,2)||'nl'});
+    enhancePhotoStory($,{path,lang:prefix.slice(0,2)||'nl'});
+    enhanceFirePresentation($,{path,lang:prefix.slice(0,2)||'nl'});
     templates[path]={path,title:$('title').text().split('|')[0].trim(),lang:prefix.slice(0,2)||'nl',html:$.html(),fields};
     const target='/.netlify/functions/page?page='+path;
     redirects.push('/'+path+' '+target+' 200!');
