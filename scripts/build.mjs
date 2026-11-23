@@ -3,6 +3,7 @@ import { load } from 'cheerio';
 import { enhancePresentation } from './presentation.mjs';
 import { enhancePhotoStory } from './photo-story.mjs';
 import { enhanceFirePresentation } from './fire-presentation.mjs';
+import { enhanceHomeLayout } from './home-layout.mjs';
 import { buildIcons } from './build-icons.mjs';
 const rewriteCopy=value=>value
   .replace(/specialisten/gi,word=>word===word.toUpperCase()?'SPECIALISATIE':word[0]==='S'?'Specialisatie':'specialisatie')
@@ -36,6 +37,7 @@ for(const prefix of ['', 'fr/', 'en/']){
     enhancePresentation($,{path,lang:prefix.slice(0,2)||'nl'});
     enhancePhotoStory($,{path,lang:prefix.slice(0,2)||'nl'});
     enhanceFirePresentation($,{path,lang:prefix.slice(0,2)||'nl'});
+    enhanceHomeLayout($);
     templates[path]={path,title:$('title').text().split('|')[0].trim(),lang:prefix.slice(0,2)||'nl',html:$.html(),fields};
     const target='/.netlify/functions/page?page='+path;
     redirects.push('/'+path+' '+target+' 200!');
