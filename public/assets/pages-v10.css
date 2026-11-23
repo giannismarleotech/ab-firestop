@@ -1,0 +1,333 @@
+/* AB Firestop — editorial layouts for services, projects and information pages. */
+body.ab-experience:not(.ab-home){--page-rule:#d9dddf;--page-soft:#f1f2f2;--page-ink:#171b1d;--page-muted:#5d666a}
+body.ab-experience:not(.ab-home) main{background:#fff;color:var(--page-ink)}
+body.ab-experience:not(.ab-home) main :is(h1,h2,h3){font-family:var(--font-display,'Barlow Condensed',Arial,sans-serif);text-transform:none;letter-spacing:-.025em;font-weight:600;color:var(--page-ink)}
+body.ab-experience:not(.ab-home) main :is(p,li){font-size:1rem;line-height:1.8}
+body.ab-experience:not(.ab-home) main .eyebrow{font-size:.8125rem;letter-spacing:.13em;font-weight:700;line-height:1.65;color:#b3202b}
+body.ab-experience:not(.ab-home) main .text-link{font-size:.9375rem;line-height:1.6;letter-spacing:0;color:var(--page-ink);padding-bottom:5px;border-bottom:1px solid #9ca5a8;transition:color .2s,border-color .2s}
+body.ab-experience:not(.ab-home) main .text-link:hover{color:#c41f2c;border-color:#c41f2c}
+/* A title and a precise introduction, sharing one horizontal line. */
+body.ab-experience:not(.ab-home) .page-head.wrap,
+body.ab-experience:not(.ab-home) .detail-head.wrap{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.75fr);align-items:end;column-gap:clamp(35px,6vw,110px);row-gap:0;width:min(1440px,calc(100% - 96px));margin:0 auto 80px;padding:76px 0 56px;border:0;border-bottom:1px solid var(--page-rule);background:#fff;text-align:left;overflow:visible}
+body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) .eyebrow{grid-column:1/-1;margin:0 0 25px;color:#b3202b}
+body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) h1{grid-column:1;max-width:none;margin:0;font-size:clamp(58px,6.3vw,98px);line-height:.99;letter-spacing:-.025em;text-wrap:balance;overflow-wrap:normal;hyphens:auto}
+body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) h1 em{color:#df2733;font-style:normal}
+body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) .lead{grid-column:2;max-width:480px;margin:0 0 3px;font-size:1.0625rem;line-height:1.85;color:var(--page-muted);text-wrap:pretty}
+body.ab-experience:not(.ab-home) :is(.page-head .project-back,.detail-head .back){grid-column:1/-1;justify-self:start;font-size:.875rem;line-height:1.6;margin:0 0 30px;color:var(--page-muted);border-color:#aeb5b8}
+body.ab-experience:not(.ab-home) .section-heading{display:flex;gap:35px;align-items:end;margin-bottom:35px}
+body.ab-experience:not(.ab-home) .section-heading h2{font-size:clamp(40px,4.3vw,66px);line-height:1.05;margin-bottom:0}
+body.ab-experience:not(.ab-home) .section-heading>p{font-size:1rem;color:var(--page-muted)}
+/* Services read as an open catalogue rather than stacked boxes. */
+body.ab-experience:not(.ab-home) .service-list{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;padding-bottom:110px}
+body.ab-experience:not(.ab-home) .service-list .service-row{display:grid;grid-template-columns:38px minmax(0,1fr);gap:22px;align-items:start;padding:35px 0 42px;background:none;border:0!important;border-top:1px solid var(--page-rule)!important;box-shadow:none;border-radius:0;transform:none;min-height:180px;overflow:visible}
+body.ab-experience:not(.ab-home) .service-row .num{font-family:inherit!important;font-size:1.0625rem!important;font-weight:700!important;line-height:1.5;letter-spacing:-.03em;min-width:0;color:#c3202d!important;padding-top:8px}
+body.ab-experience:not(.ab-home) .service-row h3{font-size:clamp(30px,2.9vw,43px);font-weight:600;line-height:1.08;margin:0 0 14px;overflow-wrap:normal;hyphens:auto;transition:color .2s}
+body.ab-experience:not(.ab-home) .service-row p{font-size:1rem;line-height:1.75;max-width:390px;margin:0;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .service-row:hover h3{color:#cf2530}
+/* Service detail: generous photography with a clear technical reading column. */
+body.ab-experience:not(.ab-home) .detail-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(40px,6vw,100px);align-items:start;padding-bottom:105px}
+body.ab-experience:not(.ab-home) .detail-image{position:sticky;top:130px;height:clamp(460px,52vw,720px);border-radius:0;overflow:hidden;background:var(--page-soft)}
+body.ab-experience:not(.ab-home) .detail-image>img{width:100%;height:100%;object-fit:cover;filter:none}
+body.ab-experience:not(.ab-home) .detail-grid h2{font-size:clamp(36px,3.5vw,54px);line-height:1.08;margin-bottom:24px}
+body.ab-experience:not(.ab-home) .detail-grid h3{font-size:29px;line-height:1.15;margin:30px 0 15px}
+body.ab-experience:not(.ab-home) .detail-grid p{color:var(--page-muted);font-size:1rem;line-height:1.85}
+body.ab-experience:not(.ab-home) .application-list{list-style:none;padding:0;margin:25px 0 0}
+body.ab-experience:not(.ab-home) .application-list li{font-size:1rem;padding:15px 0;border-bottom:1px solid var(--page-rule);line-height:1.6}
+body.ab-experience:not(.ab-home) .application-list li:before{display:none}
+body.ab-experience:not(.ab-home) .technical{padding:28px 30px;margin-top:32px;background:var(--page-soft);border:0;border-radius:0}
+body.ab-experience:not(.ab-home) .technical .eyebrow{font-size:.8125rem;margin:0 0 12px}
+body.ab-experience:not(.ab-home) .technical h3{font-size:30px;margin:0 0 12px}
+body.ab-experience:not(.ab-home) .technical p:last-child{margin-bottom:0}
+body.ab-experience:not(.ab-home) .steel-graphic{height:620px;background:#1b2326;padding:50px;color:#fff}
+body.ab-experience:not(.ab-home) .steel-graphic>span{font-size:190px;color:#eb303d}
+body.ab-experience:not(.ab-home) .steel-graphic b{font-size:28px;font-weight:500}
+body.ab-experience:not(.ab-home) .steel-graphic small{font-size:.875rem;line-height:1.8;letter-spacing:.06em}
+body.ab-experience:not(.ab-home) .service-photo-section{padding:0 0 100px}
+body.ab-experience:not(.ab-home) .service-photo-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:24px}
+body.ab-experience:not(.ab-home) .service-photo-grid .photo-button{border-radius:0;background:var(--page-soft)}
+body.ab-experience:not(.ab-home) .service-photo-grid .photo-button:first-child{grid-row:span 2}
+body.ab-experience:not(.ab-home) .service-photo-grid .photo-button>img{height:280px;width:100%;object-fit:cover;filter:none}
+body.ab-experience:not(.ab-home) .service-photo-grid .photo-button:first-child>img{height:584px}
+body.ab-experience:not(.ab-home) .service-depth{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,100px);padding:60px 0 100px;border-top:1px solid var(--page-rule)}
+body.ab-experience:not(.ab-home) .service-depth h2{font-size:clamp(40px,4vw,60px);line-height:1.06}
+body.ab-experience:not(.ab-home) .service-depth article{gap:25px;padding:26px 0;border-color:var(--page-rule)}
+body.ab-experience:not(.ab-home) .service-depth article>span{font-family:inherit;font-size:1rem;font-weight:700;color:#b3202b;padding-top:5px}
+body.ab-experience:not(.ab-home) .service-depth h3{font-size:29px;margin:0 0 12px}
+body.ab-experience:not(.ab-home) .service-depth article p{font-size:1rem;color:var(--page-muted)}
+/* Applications and company story use offset photos, without angled masks. */
+body.ab-experience:not(.ab-home) .application-intro{font-size:1.125rem;line-height:1.9;margin-bottom:70px;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .usecase,
+body.ab-experience:not(.ab-home) .story-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(40px,7vw,110px);align-items:center;padding:0;margin-bottom:110px}
+body.ab-experience:not(.ab-home) .usecase.reverse{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+body.ab-experience:not(.ab-home) .usecase.reverse>.usecase-image{order:2}
+body.ab-experience:not(.ab-home) .usecase-image,
+body.ab-experience:not(.ab-home) .story-photo{height:530px;clip-path:none;border-radius:0;overflow:hidden;background:var(--page-soft)}
+body.ab-experience:not(.ab-home) :is(.usecase-image,.story-photo)>img{width:100%;height:100%;object-fit:cover;filter:none}
+body.ab-experience:not(.ab-home) :is(.usecase,.story-grid) h2{font-size:clamp(40px,4.1vw,62px);line-height:1.05;margin-bottom:25px}
+body.ab-experience:not(.ab-home) :is(.usecase,.story-grid) p{font-size:1rem;color:var(--page-muted);line-height:1.9}
+body.ab-experience:not(.ab-home) .context-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:0 0 105px}
+body.ab-experience:not(.ab-home) .context-grid article{border-top:1px solid var(--page-rule);padding-top:32px}
+body.ab-experience:not(.ab-home) .context-grid h2{font-size:40px;line-height:1.1}
+body.ab-experience:not(.ab-home) .values-band{background:var(--page-soft);padding:80px 0;color:var(--page-ink)}
+body.ab-experience:not(.ab-home) .values-band h2{font-size:clamp(42px,4.5vw,68px);line-height:1.05}
+body.ab-experience:not(.ab-home) .value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:45px;margin-top:50px}
+body.ab-experience:not(.ab-home) .value-grid article{border-top:1px solid #c6cdd0;padding-top:22px}
+body.ab-experience:not(.ab-home) .value-grid .step-number{font-family:inherit;font-weight:700;font-size:1rem;color:#b3202b}
+body.ab-experience:not(.ab-home) .value-grid h3{font-size:34px;line-height:1.1;margin:25px 0 18px}
+body.ab-experience:not(.ab-home) .value-grid p{font-size:1rem;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .team-section{padding:100px 0}
+body.ab-experience:not(.ab-home) .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+body.ab-experience:not(.ab-home) .team-grid article,
+body.ab-experience:not(.ab-home) .team-grid .additional-director.has-portrait{display:block;grid-column:auto;padding:0;border:0;min-width:0}
+body.ab-experience:not(.ab-home) .team-grid .team-portrait{width:100%;height:330px;object-fit:cover;background:var(--page-soft);margin-bottom:26px;filter:none;border-radius:0}
+body.ab-experience:not(.ab-home) .team-grid .team-portrait.ardit{object-position:50% 25%}
+body.ab-experience:not(.ab-home) .team-grid .team-portrait.andy{object-position:50% 35%}
+body.ab-experience:not(.ab-home) .team-grid .team-portrait.bledar{object-position:50% 28%}
+body.ab-experience:not(.ab-home) .team-grid .eyebrow{margin-bottom:9px}
+body.ab-experience:not(.ab-home) .team-grid h3,
+body.ab-experience:not(.ab-home) .team-grid .additional-director h3{font-size:38px;line-height:1.1;margin:0 0 18px}
+body.ab-experience:not(.ab-home) .team-grid a{font-size:1rem;line-height:1.9;display:block;overflow-wrap:anywhere}
+body.ab-experience:not(.ab-home) .team-grid .text-link{display:inline-block;margin-top:17px}
+/* Real projects lead with large imagery and concise, legible captions. */
+body.ab-experience:not(.ab-home) .project-overview{display:grid;grid-template-columns:1fr 1fr;gap:75px 40px;padding:0 0 110px}
+body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child{grid-column:1/-1;display:grid;grid-template-columns:1.55fr 1fr;column-gap:60px;align-content:center;padding:0 0 45px;border-bottom:1px solid var(--page-rule)}
+body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-photo{grid-column:1;grid-row:1/6;aspect-ratio:auto;min-height:450px;height:100%;margin:0}
+body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-meta{margin-top:60px}
+body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-link{justify-self:start;align-self:start;margin-bottom:60px}
+body.ab-experience:not(.ab-home) .project-card-photo{aspect-ratio:1.35;background:var(--page-soft);border-radius:0;overflow:hidden}
+body.ab-experience:not(.ab-home) .project-card-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1);filter:none}
+body.ab-experience:not(.ab-home) .project-card:hover .project-card-photo img{transform:scale(1.035)}
+body.ab-experience:not(.ab-home) .project-card-meta{font-size:.8125rem;line-height:1.6;letter-spacing:.06em;margin:22px 0 14px;color:#626c70}
+body.ab-experience:not(.ab-home) .project-card h3{font-size:clamp(34px,3.5vw,52px);line-height:1.05;margin:0 0 17px}
+body.ab-experience:not(.ab-home) .project-card>p{font-size:1rem;line-height:1.8;max-width:540px;color:var(--page-muted);margin:0 0 22px}
+body.ab-experience:not(.ab-home) .project-card-link{font-size:.9375rem;line-height:1.6;color:var(--page-ink);border-color:#9ca5a8;padding-bottom:5px}
+body.ab-experience:not(.ab-home) .page-head.project-head{margin-bottom:0}
+body.ab-experience:not(.ab-home) .project-hero{padding-top:40px}
+body.ab-experience:not(.ab-home) .project-hero>img{width:100%;height:clamp(430px,48vw,720px);object-fit:cover;border-radius:0}
+body.ab-experience:not(.ab-home) .project-hero>div{font-size:.875rem;letter-spacing:0;line-height:1.8;gap:30px;padding:22px 0;border-color:var(--page-rule);color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .project-gallery-section{padding:90px 0 100px}
+body.ab-experience:not(.ab-home) .project-gallery{display:grid;grid-template-columns:1fr 1fr;gap:40px 26px}
+body.ab-experience:not(.ab-home) .project-gallery figure{min-width:0;margin:0}
+body.ab-experience:not(.ab-home) .project-gallery .photo-button{height:400px;background:var(--page-soft);border-radius:0}
+body.ab-experience:not(.ab-home) .project-gallery img{width:100%;height:100%;object-fit:contain;filter:none}
+body.ab-experience:not(.ab-home) .project-gallery figure:nth-child(5n + 1){grid-column:1/-1}
+body.ab-experience:not(.ab-home) .project-gallery figure:nth-child(5n + 1) .photo-button{height:560px}
+body.ab-experience:not(.ab-home) .project-gallery figcaption{font-size:.875rem;line-height:1.6;padding-top:13px;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .project-related{padding-top:55px;border-color:var(--page-rule)}
+body.ab-experience:not(.ab-home) .project-related .project-overview{grid-template-columns:repeat(2,minmax(0,1fr));gap:45px 30px;padding:0 0 90px}
+body.ab-experience:not(.ab-home) .project-related .project-overview>.project-card:first-child{display:block;grid-column:auto;padding:0;border:0}
+body.ab-experience:not(.ab-home) .project-related .project-overview>.project-card:first-child .project-card-photo{height:auto;min-height:0;aspect-ratio:1.5}
+body.ab-experience:not(.ab-home) .project-related .project-overview>.project-card:first-child .project-card-meta{margin-top:22px}
+body.ab-experience:not(.ab-home) .project-related .project-overview>.project-card:first-child .project-card-link{margin-bottom:0}
+body.ab-experience:not(.ab-home) .project-related .project-card h3{font-size:36px}
+/* Process, technical documentation and frequently asked questions. */
+body.ab-experience:not(.ab-home) .steps{display:grid;grid-template-columns:1fr 1fr;gap:0 70px;padding:0 0 95px}
+body.ab-experience:not(.ab-home) .steps article{padding:30px 0 45px;border-top:1px solid var(--page-rule)}
+body.ab-experience:not(.ab-home) .steps .step-number,
+body.ab-experience:not(.ab-home) .steps article>span{font-family:inherit;font-size:1.0625rem;font-weight:700;letter-spacing:0;color:#b3202b}
+body.ab-experience:not(.ab-home) .steps h2{font-size:42px;line-height:1.08;margin:35px 0 22px}
+body.ab-experience:not(.ab-home) .steps p{font-size:1rem;color:var(--page-muted);line-height:1.85;max-width:540px}
+body.ab-experience:not(.ab-home) .wide-photo{height:clamp(360px,40vw,620px);margin-bottom:110px}
+body.ab-experience:not(.ab-home) .wide-photo img{filter:none}
+body.ab-experience:not(.ab-home) .document-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);padding:0 0 100px}
+body.ab-experience:not(.ab-home) .document-grid h2{font-size:clamp(40px,4vw,60px);line-height:1.05;margin-bottom:25px}
+body.ab-experience:not(.ab-home) .document-grid p{font-size:1rem;line-height:1.9;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .document-panel{background:var(--page-soft);padding:35px 40px;border:0;border-radius:0}
+body.ab-experience:not(.ab-home) .document-panel li{padding:20px 0;border-color:#cfd5d8;font-size:1rem}
+body.ab-experience:not(.ab-home) .document-panel li b{font-size:1rem;color:var(--page-ink)}
+body.ab-experience:not(.ab-home) .document-panel li span{font-size:.9375rem;line-height:1.8;margin-top:9px;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .handover{padding:80px 0}
+body.ab-experience:not(.ab-home) .handover h2{font-size:clamp(40px,4vw,62px);line-height:1.1}
+body.ab-experience:not(.ab-home) .handover p{font-size:1.0625rem;line-height:1.85;max-width:760px;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .faq-page{max-width:1120px;padding:0 0 80px}
+body.ab-experience:not(.ab-home) .faq-category{display:grid;grid-template-columns:minmax(200px,.6fr) minmax(0,1.4fr);gap:0 60px;margin-bottom:60px;padding-top:25px;border-top:1px solid var(--page-rule)}
+body.ab-experience:not(.ab-home) .faq-category h2{grid-column:1;grid-row:1/20;font-size:38px;line-height:1.06;margin:0;padding:6px 0 0;border:0}
+body.ab-experience:not(.ab-home) .faq-category details{grid-column:2;padding:24px 0;border-color:var(--page-rule)}
+body.ab-experience:not(.ab-home) .faq-category details:first-of-type{padding-top:0}
+body.ab-experience:not(.ab-home) .faq-category summary{font-size:1.0625rem;line-height:1.7;font-weight:600;gap:30px;text-transform:none;color:var(--page-ink)}
+body.ab-experience:not(.ab-home) .faq-category summary:after{font-size:25px;flex-shrink:0;color:#c41f2c}
+body.ab-experience:not(.ab-home) .faq-category details p{font-size:1rem;line-height:1.9;margin:18px 30px 0 0;color:var(--page-muted)}
+/* Contact: real people alongside a calm, readable enquiry form. */
+body.ab-experience:not(.ab-home) .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,100px);padding:0 0 100px;align-items:start}
+body.ab-experience:not(.ab-home) .contact-grid .big-mail{font-family:var(--font-display,'Barlow Condensed',Arial,sans-serif);font-size:clamp(34px,3.5vw,52px);font-weight:600;line-height:1.25;letter-spacing:-.02em;overflow-wrap:anywhere;margin-bottom:24px;padding-bottom:10px;border-color:#a5aeb2;color:var(--page-ink)}
+body.ab-experience:not(.ab-home) .contact-grid>div>p{font-size:1rem;color:var(--page-muted);line-height:1.8}
+body.ab-experience:not(.ab-home) .people{display:grid;grid-template-columns:1fr;gap:28px;border:0;margin-top:40px;padding:0}
+body.ab-experience:not(.ab-home) .people article,
+body.ab-experience:not(.ab-home) .people .additional-director.has-portrait{display:grid;grid-template-columns:112px minmax(0,1fr);column-gap:28px;row-gap:0;grid-column:auto;margin:0;padding:25px 0 0;border-top:1px solid var(--page-rule);align-items:start}
+body.ab-experience:not(.ab-home) .people .contact-portrait{grid-column:1;grid-row:1/8;width:112px;height:145px;object-fit:cover;margin:0;border-radius:0;filter:none}
+body.ab-experience:not(.ab-home) .people article>:not(img){grid-column:2}
+body.ab-experience:not(.ab-home) .people h2,
+body.ab-experience:not(.ab-home) .people .additional-director h2{font-size:31px;line-height:1.1;margin:0 0 8px}
+body.ab-experience:not(.ab-home) .people p,
+body.ab-experience:not(.ab-home) .people .additional-director p{font-size:.875rem;line-height:1.7;margin:0 0 9px;color:var(--page-muted)}
+body.ab-experience:not(.ab-home) .people a{font-size:.9375rem;line-height:1.85;overflow-wrap:anywhere}
+body.ab-experience:not(.ab-home) .people .text-link{justify-self:start;font-size:.875rem;margin:10px 0 0;line-height:1.5}
+body.ab-experience:not(.ab-home) .contact-grid form{padding:40px;background:var(--page-soft);border:1px solid #e1e5e7;border-radius:0}
+body.ab-experience:not(.ab-home) .contact-grid form h2{font-size:clamp(36px,3.3vw,50px);line-height:1.06;margin-bottom:30px}
+body.ab-experience:not(.ab-home) .contact-grid form .eyebrow{margin-bottom:20px}
+body.ab-experience:not(.ab-home) .contact-grid label{font-size:.9375rem;line-height:1.5;font-weight:600;margin:22px 0 9px}
+body.ab-experience:not(.ab-home) .contact-grid :is(input,textarea,select){display:block;width:100%;font-size:1rem;line-height:1.55;min-height:54px;padding:14px 16px;background:#fff;color:#171b1d;border:1px solid #bec7cc;border-radius:0;box-shadow:none}
+body.ab-experience:not(.ab-home) .contact-grid :is(input,textarea,select):focus{border-color:#b3202b;outline:2px solid #b3202b30;outline-offset:1px}
+body.ab-experience:not(.ab-home) .contact-grid textarea{min-height:160px}
+body.ab-experience:not(.ab-home) .contact-grid select{appearance:none;padding-right:42px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m3 6 5 5 5-5' fill='none' stroke='%23171b1d' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 16px center}
+body.ab-experience:not(.ab-home) .contact-grid .form-note{font-size:.875rem;line-height:1.75;color:var(--page-muted);margin:20px 0}
+body.ab-experience:not(.ab-home) .contact-grid #form-status{font-size:.9375rem;line-height:1.7;margin-top:18px}
+body.ab-experience:not(.ab-home) .contact-grid form .button{width:100%;margin-top:6px;font-size:1rem;min-height:56px}
+body.ab-experience:not(.ab-home) .contact-work-photo{padding:0;margin-bottom:100px}
+body.ab-experience:not(.ab-home) .contact-work-photo .photo-button>img{width:100%;height:clamp(350px,42vw,620px);filter:none;object-fit:cover}
+body.ab-experience:not(.ab-home) .site-photo-bridge{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;padding:0 0 100px}
+body.ab-experience:not(.ab-home) .site-photo-bridge .photo-button>img{width:100%;height:440px;filter:none;object-fit:cover}
+body.ab-experience:not(.ab-home) .site-photo-bridge>p{font-size:.875rem;line-height:1.6;margin:0;color:var(--page-muted)}
+/* Inner-page CTA uses the shared global component; keep editorial headings. */
+body.ab-experience:not(.ab-home) .cta h2{font-family:var(--font-display,'Barlow Condensed',Arial,sans-serif);text-transform:none;letter-spacing:-.025em}
+@media(max-width:1100px){
+ body.ab-experience:not(.ab-home) .page-head.wrap,body.ab-experience:not(.ab-home) .detail-head.wrap{width:calc(100% - 64px);grid-template-columns:1.3fr .8fr;column-gap:35px;padding-top:58px;margin-bottom:60px}
+ body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) h1{font-size:clamp(56px,6.8vw,78px)}
+ body.ab-experience:not(.ab-home) .service-list{gap:0 35px}
+ body.ab-experience:not(.ab-home) .team-grid{gap:25px}
+ body.ab-experience:not(.ab-home) .team-grid .team-portrait{height:280px}
+ body.ab-experience:not(.ab-home) .contact-grid form{padding:30px}
+ body.ab-experience:not(.ab-home) .people article,body.ab-experience:not(.ab-home) .people .additional-director.has-portrait{grid-template-columns:95px minmax(0,1fr);column-gap:20px}
+ body.ab-experience:not(.ab-home) .people .contact-portrait{width:95px;height:130px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child{column-gap:35px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-photo{min-height:400px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-meta{margin-top:25px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-link{margin-bottom:25px}
+}
+@media(max-width:800px){
+ body.ab-experience:not(.ab-home) .page-head.wrap,body.ab-experience:not(.ab-home) .detail-head.wrap{display:block;width:calc(100% - 40px);padding:45px 0 38px;margin:0 auto 45px}
+ body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) .eyebrow{font-size:.75rem;margin-bottom:22px}
+ body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) h1{font-size:clamp(44px,9vw,68px);line-height:1.02;max-width:700px;margin:0 0 25px;text-wrap:balance;hyphens:auto;overflow-wrap:break-word}
+ body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) .lead{font-size:1rem;line-height:1.8;max-width:650px;margin:0}
+ body.ab-experience:not(.ab-home) :is(.page-head .project-back,.detail-head .back){font-size:.875rem;margin-bottom:24px}
+ body.ab-experience:not(.ab-home) .section-heading{display:block;margin-bottom:28px}
+ body.ab-experience:not(.ab-home) .section-heading h2{font-size:clamp(36px,7vw,52px)}
+ body.ab-experience:not(.ab-home) .section-heading>p{margin-top:20px}
+ body.ab-experience:not(.ab-home) .service-list{gap:0 28px;padding-bottom:65px}
+ body.ab-experience:not(.ab-home) .service-list .service-row{grid-template-columns:25px minmax(0,1fr);gap:14px;padding:27px 0 30px;min-height:0}
+ body.ab-experience:not(.ab-home) .service-row h3{font-size:31px}
+ body.ab-experience:not(.ab-home) .detail-grid,body.ab-experience:not(.ab-home) .service-depth,body.ab-experience:not(.ab-home) .document-grid,body.ab-experience:not(.ab-home) .contact-grid{grid-template-columns:1fr;gap:38px;padding-bottom:65px}
+ body.ab-experience:not(.ab-home) .detail-image{position:relative;top:auto;height:440px}
+ body.ab-experience:not(.ab-home) .detail-grid h2{font-size:40px}
+ body.ab-experience:not(.ab-home) .technical{padding:26px}
+ body.ab-experience:not(.ab-home) .service-depth{padding-top:40px}
+ body.ab-experience:not(.ab-home) .service-depth h2{font-size:42px;margin-bottom:22px}
+ body.ab-experience:not(.ab-home) .service-depth article{padding:22px 0}
+ body.ab-experience:not(.ab-home) .service-photo-section{padding-bottom:65px}
+ body.ab-experience:not(.ab-home) .service-photo-grid{gap:16px}
+ body.ab-experience:not(.ab-home) .service-photo-grid .photo-button>img{height:190px}
+ body.ab-experience:not(.ab-home) .service-photo-grid .photo-button:first-child>img{height:396px}
+ body.ab-experience:not(.ab-home) .application-intro{font-size:1.0625rem;margin-bottom:45px}
+ body.ab-experience:not(.ab-home) .usecase,body.ab-experience:not(.ab-home) .usecase.reverse,body.ab-experience:not(.ab-home) .story-grid{grid-template-columns:1fr;gap:32px;margin-bottom:65px}
+ body.ab-experience:not(.ab-home) .usecase.reverse>.usecase-image{order:0}
+ body.ab-experience:not(.ab-home) .usecase-image,body.ab-experience:not(.ab-home) .story-photo{height:400px}
+ body.ab-experience:not(.ab-home) :is(.usecase,.story-grid) h2{font-size:42px}
+ body.ab-experience:not(.ab-home) .context-grid{gap:30px;padding-bottom:65px}
+ body.ab-experience:not(.ab-home) .context-grid h2{font-size:34px}
+ body.ab-experience:not(.ab-home) .values-band{padding:60px 0}
+ body.ab-experience:not(.ab-home) .values-band h2{font-size:46px}
+ body.ab-experience:not(.ab-home) .value-grid{gap:25px;margin-top:35px}
+ body.ab-experience:not(.ab-home) .value-grid h3{font-size:30px}
+ body.ab-experience:not(.ab-home) .team-section{padding:65px 0}
+ body.ab-experience:not(.ab-home) .team-grid{grid-template-columns:1fr;gap:35px}
+ body.ab-experience:not(.ab-home) .team-grid article,body.ab-experience:not(.ab-home) .team-grid .additional-director.has-portrait{display:grid;grid-template-columns:170px minmax(0,1fr);gap:28px}
+ body.ab-experience:not(.ab-home) .team-grid .team-portrait{width:170px;height:220px;margin:0}
+ body.ab-experience:not(.ab-home) .team-grid h3,body.ab-experience:not(.ab-home) .team-grid .additional-director h3{font-size:35px}
+ body.ab-experience:not(.ab-home) .project-overview{gap:50px 25px;padding-bottom:65px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child{display:block;padding-bottom:35px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-photo{height:auto;min-height:0;aspect-ratio:1.6}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-meta{margin-top:22px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child .project-card-link{margin-bottom:0}
+ body.ab-experience:not(.ab-home) .project-card h3{font-size:36px}
+ body.ab-experience:not(.ab-home) .project-hero{padding-top:0}
+ body.ab-experience:not(.ab-home) .project-hero>img{height:410px}
+ body.ab-experience:not(.ab-home) .project-hero>div{font-size:.8125rem;display:block;padding:18px 0}
+ body.ab-experience:not(.ab-home) .project-hero>div>a{display:inline-block;margin-top:9px}
+ body.ab-experience:not(.ab-home) .project-gallery-section{padding:60px 0}
+ body.ab-experience:not(.ab-home) .project-gallery{gap:27px 16px}
+ body.ab-experience:not(.ab-home) .project-gallery .photo-button{height:280px}
+ body.ab-experience:not(.ab-home) .project-gallery figure:nth-child(5n + 1) .photo-button{height:380px}
+ body.ab-experience:not(.ab-home) .project-gallery figcaption{font-size:.8125rem;flex-wrap:wrap;gap:4px 12px}
+ body.ab-experience:not(.ab-home) .project-related .project-card h3{font-size:30px}
+ body.ab-experience:not(.ab-home) .project-related .project-overview{padding-bottom:65px}
+ body.ab-experience:not(.ab-home) .steps{gap:0 35px;padding-bottom:55px}
+ body.ab-experience:not(.ab-home) .steps h2{font-size:36px;margin-top:25px}
+ body.ab-experience:not(.ab-home) .wide-photo{height:350px;margin-bottom:65px}
+ body.ab-experience:not(.ab-home) .document-grid h2{font-size:42px}
+ body.ab-experience:not(.ab-home) .document-panel{padding:28px}
+ body.ab-experience:not(.ab-home) .handover{padding:60px 0}
+ body.ab-experience:not(.ab-home) .handover h2{font-size:42px}
+ body.ab-experience:not(.ab-home) .faq-page{padding-bottom:50px}
+ body.ab-experience:not(.ab-home) .faq-category{grid-template-columns:1fr;gap:0;padding-top:22px;margin-bottom:40px}
+ body.ab-experience:not(.ab-home) .faq-category h2{grid-column:1;grid-row:auto;font-size:36px;margin-bottom:28px}
+ body.ab-experience:not(.ab-home) .faq-category details{grid-column:1}
+ body.ab-experience:not(.ab-home) .contact-grid{gap:50px}
+ body.ab-experience:not(.ab-home) .contact-grid .big-mail{font-size:42px}
+ body.ab-experience:not(.ab-home) .people{grid-template-columns:1fr}
+ body.ab-experience:not(.ab-home) .people article,body.ab-experience:not(.ab-home) .people .additional-director.has-portrait{grid-template-columns:112px minmax(0,1fr);column-gap:25px}
+ body.ab-experience:not(.ab-home) .people .contact-portrait{width:112px;height:145px}
+ body.ab-experience:not(.ab-home) .contact-grid form{padding:30px}
+ body.ab-experience:not(.ab-home) .contact-grid form h2{font-size:42px}
+ body.ab-experience:not(.ab-home) .contact-work-photo{margin-bottom:65px}
+ body.ab-experience:not(.ab-home) .contact-work-photo .photo-button>img{height:360px}
+ body.ab-experience:not(.ab-home) .site-photo-bridge{grid-template-columns:1fr 1fr;gap:16px;padding-bottom:65px}
+ body.ab-experience:not(.ab-home) .site-photo-bridge .photo-button>img{height:300px}
+}
+@media(max-width:540px){
+ body.ab-experience:not(.ab-home) .page-head.wrap,body.ab-experience:not(.ab-home) .detail-head.wrap{width:calc(100% - 36px);padding-top:38px;margin-bottom:35px}
+ body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) h1{font-size:clamp(40px,10.5vw,56px);line-height:1.04}
+ body.ab-experience:not(.ab-home) .service-list{grid-template-columns:1fr}
+ body.ab-experience:not(.ab-home) .service-row h3{font-size:34px}
+ body.ab-experience:not(.ab-home) .service-list .service-row{grid-template-columns:25px minmax(0,1fr);gap:18px}
+ body.ab-experience:not(.ab-home) .detail-image{height:350px}
+ body.ab-experience:not(.ab-home) .detail-grid h2,body.ab-experience:not(.ab-home) .service-depth h2,body.ab-experience:not(.ab-home) :is(.usecase,.story-grid) h2,body.ab-experience:not(.ab-home) .document-grid h2{font-size:37px}
+ body.ab-experience:not(.ab-home) .technical{padding:24px}
+ body.ab-experience:not(.ab-home) .service-photo-grid{grid-template-columns:1fr 1fr;gap:12px}
+ body.ab-experience:not(.ab-home) .service-photo-grid .photo-button:first-child{grid-row:auto;grid-column:1/-1}
+ body.ab-experience:not(.ab-home) .service-photo-grid .photo-button:first-child>img{height:290px}
+ body.ab-experience:not(.ab-home) .service-photo-grid .photo-button:last-child{grid-column:auto}
+ body.ab-experience:not(.ab-home) .service-photo-grid .photo-button>img,body.ab-experience:not(.ab-home) .service-photo-grid .photo-button:last-child>img{height:185px}
+ body.ab-experience:not(.ab-home) .usecase-image,body.ab-experience:not(.ab-home) .story-photo{height:330px}
+ body.ab-experience:not(.ab-home) .context-grid,body.ab-experience:not(.ab-home) .value-grid{grid-template-columns:1fr;gap:24px}
+ body.ab-experience:not(.ab-home) .values-band h2{font-size:39px}
+ body.ab-experience:not(.ab-home) .value-grid h3{font-size:33px;margin-top:20px}
+ body.ab-experience:not(.ab-home) .team-grid article,body.ab-experience:not(.ab-home) .team-grid .additional-director.has-portrait{grid-template-columns:115px minmax(0,1fr);gap:20px}
+ body.ab-experience:not(.ab-home) .team-grid .team-portrait{width:115px;height:170px}
+ body.ab-experience:not(.ab-home) .team-grid h3,body.ab-experience:not(.ab-home) .team-grid .additional-director h3{font-size:30px}
+ body.ab-experience:not(.ab-home) .team-grid a{font-size:.875rem}
+ body.ab-experience:not(.ab-home) .project-overview{grid-template-columns:1fr;gap:38px}
+ body.ab-experience:not(.ab-home) .project-overview>.project-card:first-child{grid-column:auto}
+ body.ab-experience:not(.ab-home) .project-card-photo{aspect-ratio:1.3}
+ body.ab-experience:not(.ab-home) .project-card-meta{font-size:.8125rem;margin:18px 0 12px}
+ body.ab-experience:not(.ab-home) .project-card h3{font-size:38px}
+ body.ab-experience:not(.ab-home) .project-hero>img{height:330px}
+ body.ab-experience:not(.ab-home) .project-gallery{grid-template-columns:1fr;gap:28px}
+ body.ab-experience:not(.ab-home) .project-gallery figure:nth-child(5n + 1){grid-column:auto}
+ body.ab-experience:not(.ab-home) .project-gallery .photo-button,body.ab-experience:not(.ab-home) .project-gallery figure:nth-child(5n + 1) .photo-button{height:340px}
+ body.ab-experience:not(.ab-home) .project-gallery figcaption{font-size:.875rem}
+ body.ab-experience:not(.ab-home) .project-related .project-overview{grid-template-columns:1fr;gap:35px}
+ body.ab-experience:not(.ab-home) .project-related .project-card h3{font-size:36px}
+ body.ab-experience:not(.ab-home) .steps{grid-template-columns:1fr}
+ body.ab-experience:not(.ab-home) .steps article{padding:25px 0 30px}
+ body.ab-experience:not(.ab-home) .steps h2{font-size:38px;margin-top:22px}
+ body.ab-experience:not(.ab-home) .wide-photo{height:290px}
+ body.ab-experience:not(.ab-home) .document-panel{padding:23px}
+ body.ab-experience:not(.ab-home) .faq-category h2{font-size:34px}
+ body.ab-experience:not(.ab-home) .faq-category summary{font-size:1rem;gap:20px}
+ body.ab-experience:not(.ab-home) .faq-category details p{margin-right:0}
+ body.ab-experience:not(.ab-home) .contact-grid .big-mail{font-size:38px}
+ body.ab-experience:not(.ab-home) .contact-grid form{padding:25px 20px}
+ body.ab-experience:not(.ab-home) .contact-grid form h2{font-size:36px}
+ body.ab-experience:not(.ab-home) .people article,body.ab-experience:not(.ab-home) .people .additional-director.has-portrait{grid-template-columns:90px minmax(0,1fr);column-gap:20px}
+ body.ab-experience:not(.ab-home) .people .contact-portrait{width:90px;height:130px}
+ body.ab-experience:not(.ab-home) .people h2,body.ab-experience:not(.ab-home) .people .additional-director h2{font-size:29px}
+ body.ab-experience:not(.ab-home) .people a{font-size:.875rem}
+ body.ab-experience:not(.ab-home) .contact-work-photo .photo-button>img{height:300px}
+ body.ab-experience:not(.ab-home) .site-photo-bridge{grid-template-columns:1fr}
+ body.ab-experience:not(.ab-home) .site-photo-bridge .photo-button>img{height:310px}
+ body.ab-experience:not(.ab-home) .site-photo-bridge>p{grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){body.ab-experience:not(.ab-home) .project-card-photo img{transition:none}}
+/* Keep the shared red call-to-action legible against inner-page type rules. */
+body.ab-experience:not(.ab-home) main .cta .eyebrow{color:#ffd7da}
+body.ab-experience:not(.ab-home) main .cta h2{color:#fff}
