@@ -21,7 +21,13 @@ for(const prefix of ['', 'fr/', 'en/']){
         const span=$('<cms-text></cms-text>').attr('data-cms',id).text(value);$(node).replaceWith(span);
       }
     });
-    $('img').each((_,el)=>{if($(el).closest('.brand-intro').length)return;const id='image-'+number++;fields[id]={type:'image',label:'Foto',value:$(el).attr('src')??'',alt:$(el).attr('alt')??'',area:'Foto’s'};$(el).attr('data-cms',id);});
+    $('img').each((_,el)=>{if($(el).closest('.brand-intro').length)return;const id='image-'+number++;const oldSource=$(el).attr('src')??'';
+      const home=path==='index.html'||path==='en/index.html'||path==='fr/index.html';
+      const replacements={'interbad-brugge-6-thumb.webp':'interbad-brugge-11.webp','kortemark-2-thumb.webp':'kortemark-6.webp','abattoir-molenbeek-3-thumb.webp':'abattoir-molenbeek-3.webp','aquafin-gent-6-thumb.webp':'aquafin-gent-2.webp'};
+      let value=oldSource;
+      if(home&&$(el).hasClass('hero-background'))value=oldSource.replace('aquafin-gent-4.webp','aquafin-gent-6.webp');
+      else if(home&&$(el).closest('.home-projects').length){for(const [from,to] of Object.entries(replacements))value=value.replace(from,to);}
+      fields[id]={type:'image',label:'Foto',value,...(value!==oldSource?{legacyValue:oldSource}:{}),alt:$(el).attr('alt')??'',area:'Foto’s'};$(el).attr('data-cms',id);});
     $('head').append('<link rel="stylesheet" href="/assets/cms-gallery.css">');
     $('meta[name="description"]').each((_,el)=>$(el).attr('content',rewriteCopy($(el).attr('content')||'')));
     $('body').attr('data-cms-page',path).append('<script src="/assets/analytics.js" defer></script>');
