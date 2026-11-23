@@ -1,5 +1,6 @@
 import { readdir,readFile,writeFile } from 'node:fs/promises';
 import { load } from 'cheerio';
+import { enhancePresentation } from './presentation.mjs';
 const templates={},redirects=[];
 for(const prefix of ['', 'fr/', 'en/']){
   for(const name of (await readdir('public/'+prefix)).filter(n=>n.endsWith('.html'))){
@@ -15,6 +16,7 @@ for(const prefix of ['', 'fr/', 'en/']){
     $('img').each((_,el)=>{if($(el).closest('.brand-intro').length)return;const id='image-'+number++;fields[id]={type:'image',label:'Foto',value:$(el).attr('src')??'',alt:$(el).attr('alt')??'',area:'Foto’s'};$(el).attr('data-cms',id);});
     $('head').append('<link rel="stylesheet" href="/assets/cms-gallery.css">');
     $('body').attr('data-cms-page',path).append('<script src="/assets/analytics.js" defer></script>');
+    enhancePresentation($,{path,lang:prefix.slice(0,2)||'nl'});
     templates[path]={path,title:$('title').text().split('|')[0].trim(),lang:prefix.slice(0,2)||'nl',html:$.html(),fields};
     const target='/.netlify/functions/page?page='+path;
     redirects.push('/'+path+' '+target+' 200!');
