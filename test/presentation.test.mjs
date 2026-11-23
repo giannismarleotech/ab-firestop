@@ -10,8 +10,9 @@ import {enhancePresentation} from '../scripts/presentation.mjs';
 import {render} from '../server/render.mjs';
 
 const fixture = '<!doctype html><html lang="nl"><head><title>Example | AB Firestop</title></head><body><header><a href="index.html">Home</a></header><main><section class="new-hero"><img src="/assets/hero.webp" alt="Work"><h1>Protection</h1><p>Careful work</p></section><section class="intro"><h2>Introduction</h2></section><section class="expertise"><span>Services</span></section></main><footer><p>Contact</p></footer></body></html>';
-const annotatedFixture = '<html><head><title>CMS</title></head><body><main><section class="new-hero"><h1><cms-text data-cms="text-0">Saved heading</cms-text></h1><img data-cms="image-2" src="/photo.webp" alt="Saved photo"></section><section class="intro"><p><cms-text data-cms="text-1">Saved introduction</cms-text></p></section><section class="expertise"></section></main></body></html>';
+const annotatedFixture = '<html><head><title>CMS</title></head><body><main><section class="new-hero"><h1><cms-text data-cms="text-0">Saved heading</cms-text></h1><img data-cms="image-2" src="/photo.webp" alt="Saved photo"></section><section class="intro"><p><cms-text data-cms="text-1">Saved introduction</cms-text></p></section><section class="expertise"></section><section class="process-band"><div class="wrap"></div></section><section class="cta"></section></main></body></html>';
 const cmsSnapshot = $ => $('[data-cms]').map((_, node) => ({id:$(node).attr('data-cms'),html:$.html(node)})).get();
+const legacyFire = '.fire-stage,.fire-canvas,script[data-ab-fire],script[src*="/assets/fire-scene.js"]';
 
 test('presentation preserves CMS fields and inserts each translated home section exactly once', () => {
   for (const [lang,path,label] of [
@@ -32,10 +33,14 @@ test('presentation preserves CMS fields and inserts each translated home section
     assert.deepEqual($('.system-logo img').map((_,el)=>$(el).attr('src')).get(),['/assets/brands/mulcol.jpeg','/assets/brands/promat.jpeg']);
     assert.equal($('.systems-section [data-cms]').length,0);
     assert.equal($('.motion-toggle').length,0);
-    assert.equal($('.fire-stage .fire-canvas').length,1);
-    assert.equal($('.fire-stage').attr('aria-hidden'),'true');
-    assert.equal($('script[data-ab-fire]').length,1);
-    assert.ok($('script[data-ab-fire]').is('[defer]'));
+    assert.equal($('.heat-stage').length,1,path);
+    assert.equal($('.new-hero .heat-stage .heat-canvas').length,1,path);
+    assert.equal($('.heat-stage').attr('aria-hidden'),'true');
+    assert.equal($('.heat-stage [data-cms]').length,0,path);
+    assert.equal($('.cta .heat-stage,.process-band .heat-stage').length,0,path);
+    assert.equal($('script[data-ab-heat]').length,1,path);
+    assert.ok($('script[data-ab-heat]').is('[defer]'));
+    assert.equal($(legacyFire).length,0,path);
     assert.equal($('link[rel="icon"]').length,2);
     assert.ok($('link[rel="icon"]').first().attr('href').startsWith('/favicon.ico'));
     assert.equal($('link[data-ab-experience]').length,1);
@@ -45,11 +50,15 @@ test('presentation preserves CMS fields and inserts each translated home section
 });
 
 test('detail pages get shared styling, while administration is untouched', () => {
-  const detail=load(annotatedFixture);
-  enhancePresentation(detail,{path:'en/services.html',lang:'en'});
-  assert.equal(detail('.systems-section,.motion-toggle').length,0);
-  assert.equal(detail('body.ab-home').length,0);
-  assert.equal(detail('link[data-ab-experience]').length,1);
+  for (const [lang,path] of [['nl','diensten.html'],['fr','fr/services.html'],['en','en/services.html']]) {
+    const detail=load(annotatedFixture), original=cmsSnapshot(detail);
+    enhancePresentation(detail,{path,lang});
+    assert.deepEqual(cmsSnapshot(detail),original,path);
+    assert.equal(detail('.systems-section,.motion-toggle,.heat-stage,.heat-canvas,script[data-ab-heat]').length,0,path);
+    assert.equal(detail(legacyFire).length,0,path);
+    assert.equal(detail('body.ab-home').length,0,path);
+    assert.equal(detail('link[data-ab-experience]').length,1,path);
+  }
   const admin=load(fixture), before=admin.html();
   enhancePresentation(admin,{path:'admin/index.html',lang:'nl'});
   assert.equal(admin.html(),before);
@@ -67,7 +76,12 @@ test('build keeps pre-existing CMS keys and Netlify routes when adding presentat
       assert.deepEqual(Object.values(template.fields).map(field=>field.value),['Home','Protection','Careful work','Introduction','Services','Contact','/assets/hero.webp'],path);
       const $=load(template.html);
       assert.equal($('[data-cms]').length,7,path);
-      assert.equal($('.systems-section').length,path==='diensten.html'?0:1,path);
+      const isHome=path!=='diensten.html';
+      assert.equal($('.systems-section').length,isHome?1:0,path);
+      assert.equal($('.heat-stage').length,isHome?1:0,path);
+      assert.equal($('.heat-canvas').length,isHome?1:0,path);
+      assert.equal($('script[data-ab-heat]').length,isHome?1:0,path);
+      assert.equal($(legacyFire).length,0,path);
     }
     const redirects=await readFile(join(directory,'public/_redirects'),'utf8');
     assert.ok(redirects.includes('/ /.netlify/functions/page?page=index.html 200!'));
