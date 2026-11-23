@@ -2,7 +2,7 @@ import { load } from 'cheerio';
 export function render(template,content,previewOrigin){
   const $=load(template.html);
   for(const [id,field] of Object.entries(template.fields)){
-    const node=$(`[data-cms="${id}"]`);const value=content.values[id]??field.value;
+    const node=$(`[data-cms="${id}"]`);const saved=content.values[id];const value=saved===field.legacyValue?field.value:(saved??field.value);
     if(field.type==='image'){
       node.attr('src',value).attr('alt',content.values[id+'-alt']??field.alt);
       if(value!==field.value){node.removeAttr('srcset');node.closest('picture').find('source').remove();}
