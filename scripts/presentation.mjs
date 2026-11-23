@@ -2,23 +2,17 @@ const copy = {
   nl: {
     eyebrow: 'Materialen & systemen',
     heading: ['Sterke systemen.', 'Zorgvuldig verwerkt.'],
-    description: 'De toepassing bepaalt de systeemkeuze. Met aandacht voor voorbereiding, uitvoering en de juiste afwerking.',
-    pause: 'Animatie pauzeren',
-    play: 'Animatie hervatten'
+    description: 'De toepassing bepaalt de systeemkeuze. Met aandacht voor voorbereiding, uitvoering en de juiste afwerking.'
   },
   en: {
     eyebrow: 'Materials & systems',
     heading: ['Strong systems.', 'Carefully installed.'],
-    description: 'The application guides the choice of system. Preparation, installation and finishing all deserve attention.',
-    pause: 'Pause animation',
-    play: 'Resume animation'
+    description: 'The application guides the choice of system. Preparation, installation and finishing all deserve attention.'
   },
   fr: {
     eyebrow: 'Matériaux & systèmes',
     heading: ['Des systèmes solides.', 'Une mise en œuvre soignée.'],
-    description: 'Le choix du système dépend de l’application. La préparation, la mise en œuvre et la finition méritent la même attention.',
-    pause: 'Mettre l’animation en pause',
-    play: 'Reprendre l’animation'
+    description: 'Le choix du système dépend de l’application. La préparation, la mise en œuvre et la finition méritent la même attention.'
   }
 };
 
@@ -29,11 +23,13 @@ export function enhancePresentation($, {path, lang = 'nl'}) {
   if (!page || page === 'admin' || page.startsWith('admin/')) return;
 
   const body = $('body').addClass('ab-experience');
+  $('head link[rel="icon"],head link[rel="shortcut icon"],head link[rel="apple-touch-icon"]').remove();
+  $('head').append('<link rel="icon" href="/favicon.ico?v=fire3" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=fire3"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=fire3">');
   if (!$('link[data-ab-experience]').length) {
-    $('head').append('<link rel="stylesheet" href="/assets/experience.css?v=20261123" data-ab-experience>');
+    $('head').append('<link rel="stylesheet" href="/assets/experience.css?v=fire3" data-ab-experience>');
   }
   if (!$('script[data-ab-experience]').length) {
-    body.append('<script src="/assets/experience.js?v=20261123" data-ab-experience defer></script>');
+    body.append('<script src="/assets/experience.js?v=fire3" data-ab-experience defer></script>');
   }
 
   if (!['index.html', 'en/index.html', 'fr/index.html'].includes(page)) return;
@@ -55,11 +51,17 @@ export function enhancePresentation($, {path, lang = 'nl'}) {
   }
 
   const hero = $('.new-hero').first();
-  if (hero.length && !hero.find('.motion-toggle').length) {
-    const toggle = $('<button type="button" class="motion-toggle" aria-pressed="false" hidden></button>')
-      .attr('data-pause-label', text.pause)
-      .attr('data-play-label', text.play)
-      .text(text.pause);
-    hero.append(toggle);
+  if (hero.length && !hero.find('.fire-stage').length) {
+    const stage=$('<div class="fire-stage" aria-hidden="true" data-presentation-only><div class="fire-aura"></div><canvas class="fire-canvas"></canvas><div class="fire-rig"><div class="fire-orbit"></div><div class="fire-monolith"><div class="fire-emblem"><img src="/assets/logo.png" alt="" width="794" height="953" decoding="async"></div></div><div class="fire-base"></div></div></div>');
+    hero.find('.hero-content').after(stage);
+    if (!stage.parent().length) hero.append(stage);
+    body.append('<script src="/assets/fire-scene.js?v=fire3" data-ab-fire defer></script>');
   }
+  const photos=['interbad-brugge-0','aquafin-gent-4','kortemark-4','q8-gent-1','abattoir-molenbeek-2','aquafin-gent-10'];
+  $('.service-row').each((index,el)=>{
+    if ($(el).find('.service-visual').length) return;
+    $(el).attr('data-depth','').prepend(`<div class="service-visual" aria-hidden="true"><img src="/assets/projects/${photos[index%photos.length]}-thumb.webp" alt="" width="640" height="420" loading="lazy" decoding="async"></div>`);
+  });
+  $('.project-card').attr('data-depth','');
+  hero.find('.motion-toggle').remove();
 }
