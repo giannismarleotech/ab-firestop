@@ -1,0 +1,124 @@
+/* AB Firestop — compact utility navigation and a typographic graphite footer. */
+body.ab-experience header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #dedfe0;box-shadow:none;backdrop-filter:none;isolation:isolate}
+body.ab-experience header .wrap{width:min(1440px,calc(100% - 80px));margin-inline:auto}
+body.ab-experience header .topbar{display:flex!important;align-items:center;justify-content:space-between!important;height:34px;min-height:34px;gap:22px;border-bottom:1px solid #e5e6e7;color:#555b5e;font-size:12px}
+body.ab-experience header .topbar>div{display:flex;align-items:center;gap:22px}
+body.ab-experience header .topbar>div:nth-child(2){margin-left:10px;margin-right:auto}
+body.ab-experience header .topbar>div:nth-child(2)>a{font-family:inherit;font-weight:600;font-size:12px;line-height:1.3;color:#555b5e;letter-spacing:0}
+body.ab-experience header .social-mini{display:flex!important;gap:3px;flex-shrink:0}
+body.ab-experience header .social-mini a{display:flex;align-items:center;justify-content:center;width:28px;min-width:28px;height:32px;min-height:32px;padding:0;border-radius:0;background:transparent;color:#4b5154;transition:color .2s,background .2s}
+body.ab-experience header .social-mini a:hover{color:#e52330;background:#f3f4f4}
+body.ab-experience header .social-mini svg{width:14px;height:14px}
+body.ab-experience header .language-switch{display:flex!important;gap:0!important;margin:0 0 0 auto;flex-shrink:0}
+body.ab-experience header .topbar .language-switch>a{display:flex!important;visibility:visible!important;justify-content:center;align-items:center;width:40px;min-width:40px;min-height:34px;height:34px;padding:0!important;border:0!important;background:transparent;color:#545a5e!important;font:700 12px/1 Arial,Helvetica,sans-serif!important;letter-spacing:.015em;position:relative}
+body.ab-experience header .topbar .language-switch>a[aria-current="true"]{color:#e52330!important;background:transparent}
+body.ab-experience header .language-switch>a[aria-current="true"]:after{content:"";position:absolute;bottom:0;left:11px;right:11px;height:2px;background:#e52330}
+body.ab-experience header .language-switch>a:hover{background:#f2f3f3}
+body.ab-experience header .header-inner{display:flex;justify-content:space-between;align-items:center;height:76px;gap:24px;position:static}
+body.ab-experience header .brand{display:flex;align-items:center;gap:9px;flex-shrink:0;min-width:0}
+body.ab-experience header .brand .brand-symbol{width:29px;height:49px;object-fit:contain;flex:none}
+body.ab-experience header .brand .brand-wordmark{position:relative;display:block;width:204px;height:42px;overflow:hidden;transform:translateY(3px);flex:none}
+body.ab-experience header .brand .brand-wordmark img{position:absolute;left:0;top:-208px;width:204px;height:auto;max-width:none;object-fit:initial}
+body.ab-experience header .header-inner nav{display:flex;position:static;inset:auto;align-items:center;gap:22px;width:auto;height:auto;max-height:none;padding:0;background:transparent;box-shadow:none;border:0;overflow:visible}
+body.ab-experience header .header-inner nav>a{display:inline-flex;align-items:center;font-family:inherit;font-size:14px;font-weight:650;line-height:1.35;letter-spacing:-.025em;color:#252a2d;padding:10px 0;white-space:nowrap;border:0;box-shadow:none;min-height:44px}
+body.ab-experience header .header-inner nav>a:not(.button):after{content:none}
+body.ab-experience header .header-inner nav>a:not(.button):hover,body.ab-experience header .header-inner nav>a[aria-current="page"]{color:#d7212e}
+body.ab-experience header .header-inner nav .button{display:inline-flex;justify-content:center;min-height:44px;margin:0 0 0 4px;padding:12px 19px;border:1px solid #202628;border-radius:0;background:#202628;color:#fff;font-size:13px;font-weight:700;letter-spacing:0;box-shadow:none;transform:none}
+body.ab-experience header .header-inner nav .button:hover{background:#e52330;border-color:#e52330}
+body.ab-experience header .header-inner nav .button:after{content:none}
+body.ab-experience header .menu{display:none}
+body.ab-experience header :focus-visible{outline:2px solid #d7212e;outline-offset:3px}
+
+body.ab-experience footer{position:relative;background:#1b2225;color:#fff;border:0;border-top:5px solid #e52330;overflow:hidden}
+body.ab-experience footer .wrap{width:min(1440px,calc(100% - 80px));margin-inline:auto}
+body.ab-experience footer .footer-top{display:grid;grid-template-columns:1fr 1.25fr .7fr;column-gap:7%;row-gap:58px;padding:68px 0 55px}
+body.ab-experience footer .footer-top>div{min-width:0;grid-column:auto;grid-row:auto}
+body.ab-experience footer .footer-top>div:first-child{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:40px;border-bottom:1px solid #ffffff2b;padding:0 0 40px}
+body.ab-experience footer .footer-brand{display:block;flex-shrink:0;font-family:var(--font-display,"Barlow Condensed",Impact,"Arial Narrow",sans-serif);font-size:clamp(72px,9.6vw,146px);line-height:.82;letter-spacing:-.035em;font-weight:700;color:#fff;text-transform:uppercase;white-space:nowrap}
+body.ab-experience footer .footer-brand span{color:#ee3541}
+body.ab-experience footer .footer-top>div:first-child>p{margin:0 0 0 auto;max-width:285px;font-size:16px;line-height:1.65;color:#c2c8cb}
+body.ab-experience footer h3{margin:0 0 22px;color:#b7bfc2;font-family:inherit;font-size:13px;font-weight:600;line-height:1.5;letter-spacing:.11em;text-transform:uppercase}
+body.ab-experience footer p{margin:17px 0 0;color:#c8ced1;font-size:15px;line-height:1.8}
+body.ab-experience footer .footer-top>div>a:not(.footer-brand){display:block;color:#fff;font-family:inherit;font-size:16px;font-weight:450;line-height:1.6;padding:5px 0;letter-spacing:0;width:fit-content;max-width:100%;overflow-wrap:anywhere}
+body.ab-experience footer .footer-top>div>a:not(.footer-brand):hover{color:#ff7880}
+body.ab-experience footer .footer-top>div:nth-child(2)>a{font-size:clamp(19px,2vw,27px);line-height:1.5;font-weight:550;letter-spacing:-.035em;padding-top:0}
+body.ab-experience footer .footer-explore{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;align-content:start}
+body.ab-experience footer .footer-explore h3{grid-column:1/-1}
+body.ab-experience footer .footer-top>div:nth-child(3)>a{display:block!important}
+body.ab-experience footer .company-vat{font-size:12px;color:#aab3b7;margin-top:20px}
+body.ab-experience footer .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:23px 0 26px;border-top:1px solid #ffffff25;color:#b0b9bd;font-size:12px;line-height:1.5;letter-spacing:0}
+body.ab-experience footer .footer-bottom a{padding:7px 0;color:#c7cdd0}
+body.ab-experience footer .footer-bottom a:hover{color:#fff}
+body.ab-experience footer :focus-visible{outline:2px solid #fff;outline-offset:5px}
+
+@media(max-width:1280px) and (min-width:1101px){
+ body.ab-experience header .wrap{width:calc(100% - 56px)}
+ body.ab-experience header .header-inner{gap:18px}
+ body.ab-experience header .header-inner nav{gap:15px}
+ body.ab-experience header .header-inner nav>a{font-size:13px}
+ body.ab-experience header .header-inner nav .button{padding-inline:15px;font-size:12px}
+ body.ab-experience header .brand .brand-wordmark{width:184px;height:38px}
+ body.ab-experience header .brand .brand-wordmark img{width:184px;top:-187.6px}
+ body.ab-experience header .brand .brand-symbol{width:26px;height:45px}
+}
+@media(max-width:1100px){
+ body.ab-experience header .wrap{width:calc(100% - 48px)}
+ body.ab-experience header .header-inner{height:70px}
+ body.ab-experience header .menu{display:flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0;margin-left:auto;min-height:44px;padding:10px 0 10px 16px;color:#202628;font-family:inherit;font-size:15px;font-weight:650;letter-spacing:0;line-height:1;background:transparent;border:0;border-radius:0}
+ body.ab-experience header .menu span{display:block;width:23px;height:9px;border-top:2px solid currentColor;border-bottom:2px solid currentColor;transition:height .2s,transform .2s}
+ body.ab-experience header .menu[aria-expanded="true"]{color:#e52330}
+ body.ab-experience header .menu[aria-expanded="true"] span{height:2px;transform:rotate(-45deg);border-bottom:0;position:relative}
+ body.ab-experience header .menu[aria-expanded="true"] span:after{content:"";position:absolute;inset:-2px 0 auto;height:2px;background:currentColor;transform:rotate(90deg)}
+ body.ab-experience header .header-inner nav{display:none;position:absolute;top:100%;left:0;right:0;bottom:auto;width:100%;height:auto;max-height:calc(100svh - 104px);overflow-y:auto;overscroll-behavior:contain;background:#fff;padding:15px 24px 28px;border-top:1px solid #e5e7e8;border-bottom:1px solid #d3d6d7;box-shadow:0 30px 40px #14202714}
+ body.ab-experience header .header-inner nav.open{display:flex;flex-direction:column;align-items:stretch;gap:0}
+ body.ab-experience header .header-inner nav>a{display:flex;align-items:center;min-height:56px;padding:13px 0;border-bottom:1px solid #e4e7e8;font-size:24px;font-weight:550;line-height:1.25;white-space:normal;letter-spacing:-.035em}
+ body.ab-experience header .header-inner nav .button{font-size:15px;margin:20px 0 0;min-height:50px;border:1px solid #e52330;background:#e52330;color:#fff;padding:14px 20px}
+ body.ab-experience footer .footer-brand{font-size:clamp(68px,10vw,114px)}
+ body.ab-experience footer .footer-top>div:first-child>p{max-width:240px;font-size:14px}
+ body.ab-experience footer .footer-top{column-gap:35px;row-gap:40px}
+}
+@media(max-width:700px){
+ body.ab-experience header .wrap{width:calc(100% - 36px)}
+ body.ab-experience header .topbar{height:40px;min-height:40px;gap:6px}
+ body.ab-experience header .topbar>div:nth-child(2){display:none!important}
+ body.ab-experience header .social-mini{gap:3px!important}
+ body.ab-experience header .social-mini a{width:28px;min-width:28px;height:40px;min-height:40px}
+ body.ab-experience header .social-mini svg{width:14px;height:14px}
+ body.ab-experience header .topbar .language-switch>a{width:36px;min-width:36px;height:40px;min-height:40px;font-size:12px!important}
+ body.ab-experience header .header-inner{height:64px;gap:15px}
+ body.ab-experience header .brand{gap:7px}
+ body.ab-experience header .brand .brand-symbol{width:24px;height:42px}
+ body.ab-experience header .brand .brand-wordmark{width:174px;height:36px;transform:translateY(3px)}
+ body.ab-experience header .brand .brand-wordmark img{width:174px;top:-177.5px}
+ body.ab-experience header .menu{font-size:14px;padding:10px 0 10px 10px;gap:10px;min-height:44px}
+ body.ab-experience header .menu span{width:21px}
+ body.ab-experience header .header-inner nav{max-height:calc(100svh - 104px);padding:10px 22px 24px}
+ body.ab-experience header .header-inner nav>a{font-size:23px;min-height:52px;padding:12px 0}
+ body.ab-experience footer .wrap{width:calc(100% - 40px)}
+ body.ab-experience footer .footer-top{grid-template-columns:1fr 1fr;gap:32px 24px;padding:48px 0 35px}
+ body.ab-experience footer .footer-top>div:first-child{display:block;padding-bottom:28px;grid-column:1/-1}
+ body.ab-experience footer .footer-brand{font-size:clamp(60px,13.3vw,92px);line-height:.9;letter-spacing:-.035em}
+ body.ab-experience footer .footer-top>div:first-child>p{margin:25px 0 0;max-width:none;font-size:15px}
+ body.ab-experience footer .footer-top>div:nth-child(2){grid-column:1/-1}
+ body.ab-experience footer .footer-top>div:nth-child(3){grid-column:1;grid-row:auto}
+ body.ab-experience footer .footer-top>div:nth-child(4){grid-column:2;grid-row:auto}
+ body.ab-experience footer .footer-explore{display:block}
+ body.ab-experience footer .footer-top>div>a:not(.footer-brand){font-size:15px;padding:6px 0;line-height:1.55}
+ body.ab-experience footer .footer-top>div:nth-child(2)>a{font-size:25px}
+ body.ab-experience footer h3{font-size:12px;margin-bottom:17px}
+ body.ab-experience footer p{font-size:15px}
+ body.ab-experience footer .footer-bottom{font-size:12px;gap:10px;flex-wrap:wrap;padding:20px 0 23px}
+}
+@media(max-width:359px){
+ body.ab-experience header .wrap{width:calc(100% - 28px)}
+ body.ab-experience header .brand .brand-wordmark{width:150px;height:31px}
+ body.ab-experience header .brand .brand-wordmark img{width:150px;top:-153px}
+ body.ab-experience header .brand .brand-symbol{width:21px;height:37px}
+ body.ab-experience header .brand{gap:5px}
+ body.ab-experience header .menu{font-size:13px;gap:7px;padding-left:7px}
+ body.ab-experience header .menu span{width:18px}
+ body.ab-experience footer .footer-brand{font-size:54px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.ab-experience header *,body.ab-experience header *:after{transition:none!important}
+}
