@@ -7,16 +7,17 @@ import {join} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {enhancePresentation} from '../scripts/presentation.mjs';
+import {render} from '../server/render.mjs';
 
 const fixture = '<!doctype html><html lang="nl"><head><title>Example | AB Firestop</title></head><body><header><a href="index.html">Home</a></header><main><section class="new-hero"><img src="/assets/hero.webp" alt="Work"><h1>Protection</h1><p>Careful work</p></section><section class="intro"><h2>Introduction</h2></section><section class="expertise"><span>Services</span></section></main><footer><p>Contact</p></footer></body></html>';
 const annotatedFixture = '<html><head><title>CMS</title></head><body><main><section class="new-hero"><h1><cms-text data-cms="text-0">Saved heading</cms-text></h1><img data-cms="image-2" src="/photo.webp" alt="Saved photo"></section><section class="intro"><p><cms-text data-cms="text-1">Saved introduction</cms-text></p></section><section class="expertise"></section></main></body></html>';
 const cmsSnapshot = $ => $('[data-cms]').map((_, node) => ({id:$(node).attr('data-cms'),html:$.html(node)})).get();
 
 test('presentation preserves CMS fields and inserts each translated home section exactly once', () => {
-  for (const [lang,path,label,pause] of [
-    ['nl','index.html','Materialen & systemen','Animatie pauzeren'],
-    ['en','en/index.html','Materials & systems','Pause animation'],
-    ['fr','fr/index.html','Matériaux & systèmes','Mettre l’animation en pause']
+  for (const [lang,path,label] of [
+    ['nl','index.html','Materialen & systemen'],
+    ['en','en/index.html','Materials & systems'],
+    ['fr','fr/index.html','Matériaux & systèmes']
   ]) {
     const $ = load(annotatedFixture), original = cmsSnapshot($);
     enhancePresentation($,{path,lang});
@@ -30,11 +31,13 @@ test('presentation preserves CMS fields and inserts each translated home section
     assert.equal($('.systems-copy .eyebrow').text(),label);
     assert.deepEqual($('.system-logo img').map((_,el)=>$(el).attr('src')).get(),['/assets/brands/mulcol.jpeg','/assets/brands/promat.jpeg']);
     assert.equal($('.systems-section [data-cms]').length,0);
-    assert.equal($('.motion-toggle').length,1);
-    assert.equal($('.motion-toggle').text(),pause);
-    assert.equal($('.motion-toggle').attr('aria-pressed'),'false');
-    assert.ok($('.motion-toggle').is('[hidden]'));
-    assert.ok($('.motion-toggle').attr('data-play-label'));
+    assert.equal($('.motion-toggle').length,0);
+    assert.equal($('.fire-stage .fire-canvas').length,1);
+    assert.equal($('.fire-stage').attr('aria-hidden'),'true');
+    assert.equal($('script[data-ab-fire]').length,1);
+    assert.ok($('script[data-ab-fire]').is('[defer]'));
+    assert.equal($('link[rel="icon"]').length,2);
+    assert.ok($('link[rel="icon"]').first().attr('href').startsWith('/favicon.ico'));
     assert.equal($('link[data-ab-experience]').length,1);
     assert.equal($('script[data-ab-experience]').length,1);
     assert.ok($('script[data-ab-experience]').is('[defer]'));
@@ -72,4 +75,29 @@ test('build keeps pre-existing CMS keys and Netlify routes when adding presentat
     assert.ok(redirects.includes('/en/ /.netlify/functions/page?page=en/index.html 200!'));
     assert.ok(redirects.includes('/diensten.html /.netlify/functions/page?page=diensten.html 200!'));
   } finally {await rm(directory,{recursive:true,force:true});}
+});
+
+
+test('render upgrades saved old default copy while preserving customer edits', () => {
+  for (const [path,legacyValue,value] of [
+    ['index.html','Specialisten in brandwerende dichtingen','Specialisatie in brandwerende dichtingen'],
+    ['en/index.html','Specialists in firestopping','Specialising in firestopping'],
+    ['fr/index.html','Spécialistes du calfeutrement','Spécialisation dans le calfeutrement']
+  ]) {
+    const template={path,html:'<html><head></head><body><main><p><cms-text data-cms="text-0"></cms-text></p></main></body></html>',fields:{'text-0':{type:'text',value,legacyValue}}};
+    const published=values=>load(render(template,{values,extras:[]}))('[data-cms="text-0"]');
+    assert.equal(published({'text-0':legacyValue}).text(),value,`${path}: saved former default is upgraded`);
+    assert.equal(published({}).text(),value,`${path}: unsaved page uses the new default`);
+
+    // A customer's edit may still contain the former wording: it is deliberate
+    // content and must not be rewritten by a broad string replacement at render time.
+    const custom=`${legacyValue} — <strong>ons eigen team & onze aanpak</strong>`;
+    const content={values:{'text-0':custom},extras:[]};
+    const before=structuredClone(content);
+    const output=load(render(template,content))('[data-cms="text-0"]');
+    assert.equal(output.text(),custom,`${path}: custom saved copy is retained verbatim`);
+    assert.equal(output.find('strong').length,0,`${path}: saved HTML remains escaped`);
+    assert.deepEqual(content,before,`${path}: rendering does not mutate persisted content`);
+    assert.equal(published({'text-0':''}).text(),'',`${path}: intentionally blank content stays blank`);
+  }
 });
