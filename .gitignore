@@ -2,3 +2,9 @@ node_modules/
 .netlify/
 .env*
 !/.env.example
+dist/
+.private-backups/
+server/templates.json
+.wrangler/
+.dev.vars*
+wrangler.local.jsonc

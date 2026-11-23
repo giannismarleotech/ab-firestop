@@ -1,0 +1,17 @@
+{
+  // Example only. Production uses Pages dashboard bindings unless you explicitly
+  // adopt a Wrangler config with the real IDs. Do not commit secrets here.
+  "name": "ab-firestop",
+  "pages_build_output_dir": "./dist/cloudflare",
+  "compatibility_date": "2026-07-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "ab-firestop-cms",
+    "database_id": "REPLACE_WITH_YOUR_DATABASE_ID"
+  }],
+  "r2_buckets": [{
+    "binding": "MEDIA",
+    "bucket_name": "ab-firestop-media"
+  }]
+}
