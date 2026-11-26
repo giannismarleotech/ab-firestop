@@ -171,9 +171,9 @@ body.ab-home main [hidden] { display: none !important; }
 
 /* AB Firestop red with a reversed mark and high-contrast links. */
 body.ab-experience footer {
-  background: #b51925;
+  background: var(--red);
   color: #fff;
-  border-top: 1px solid #a21520;
+  border-top: 0;
 }
 body.ab-experience footer .footer-top {
   grid-template-columns: minmax(150px,.85fr) minmax(205px,1fr) minmax(245px,1.23fr) minmax(90px,.52fr);
@@ -372,4 +372,174 @@ body.ab-experience footer .footer-brand .brand-original { height: 100px; filter:
     body.ab-experience :is(.brand,.footer-brand):hover .brand-original { scale: 1.035; }
     body.ab-experience :is(.service-row,.project-card,.project-gallery figure):hover img { transform: scale(1.035); }
   }
+}
+
+body.folio header,body.folio header .header-inner nav{background:#fff}
+body.folio header .header-inner nav>a:not(.button),body.folio header .menu,body.folio header .topbar>div:nth-child(2)>a,body.folio header .social-mini a{color:#202020}
+body.folio header .topbar{border-color:#dadbd6}
+body.folio header .topbar .language-switch>a{color:#272727!important}
+body.folio header .topbar .language-switch>a[aria-current=true],body.folio header .topbar .language-switch>a:hover{color:white!important}
+body.folio header .brand .brand-original{display:none}
+body.folio header .brand{padding:0;gap:9px;min-width:0}
+.original-flame{display:block;width:36px;height:53px;background-size:56px auto;background-repeat:no-repeat;background-position:center top}
+.signature{display:grid;gap:4px}
+.original-name{display:block;width:114px;height:14px;background-size:114px auto;background-position:0 -115px;background-repeat:no-repeat}
+.signature small{font:600 9px/1.1 Manrope,Arial,sans-serif;letter-spacing:.018em;color:#282b2c}
+body.folio .header-inner{min-height:72px}
+body.folio .new-hero{padding:0;max-width:none}
+.project-cover{width:100%;height:clamp(490px,74svh,800px);position:relative;isolation:isolate;overflow:hidden;background:#242824;display:grid;align-items:center;color:white}
+.project-cover::after{position:absolute;inset:0;content:'';z-index:-1;background:linear-gradient(90deg,#0a1015c7,transparent 80%),linear-gradient(0deg,#101216cf,transparent 30%)}
+.project-cover .cover-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 48%;z-index:-2}
+.cover-content{width:min(90%,1390px);margin:0 auto;padding-bottom:50px}
+body.folio .cover-content .eyebrow{display:flex;align-items:center;gap:9px;color:white;font:600 clamp(9px,.9vw,12px)/1.4 Manrope,sans-serif;letter-spacing:.12em}
+.cover-content .brand-flame{filter:brightness(0) invert(1)}
+body.folio .cover-content h1{color:#fff;font:700 clamp(52px,7vw,116px)/.95 var(--font-display);letter-spacing:-.068em;margin:22px 0 32px;text-transform:none;max-width:100%}
+.cover-link{display:inline-flex;padding:12px 21px;background:white;color:#181818;border-radius:30px;font-weight:600;font-size:14px}
+.photo-rail{position:absolute;bottom:22px;left:5%;right:5%;display:flex;gap:14px}
+.photo-rail button{flex:1;min-width:0;display:flex;align-items:center;gap:11px;border:0;border-top:2px solid #ffffff70;padding:12px 0 0;color:white;background:none;cursor:pointer;text-align:left;font:600 clamp(11px,1.1vw,16px)/1.25 Manrope,sans-serif;text-shadow:0 1px 4px #000}
+.photo-rail button[aria-pressed=true]{border-color:#ff4b47}
+.photo-rail img{width:56px;height:38px;object-fit:cover;border-radius:3px}
+body.folio.ab-home .work-strip{padding-block:clamp(40px,5vw,78px);margin-block:0}
+body.folio.ab-home .work-strip h2,body.folio.ab-home .expertise h2{letter-spacing:-.055em;line-height:1}
+body.folio.ab-home .home-projects .project-card-photo{background:#deded8}
+body.folio.ab-home .home-projects .project-card-photo img{object-fit:contain;height:100%;width:100%}
+body.folio.ab-home .expertise{background:#f5f4ef}
+body.folio.ab-home .expertise .service-visual{display:none}
+body.folio.ab-home .expertise .service-row{min-height:95px;justify-content:center;background:transparent;border:0;border-radius:0;border-top:1px solid #a9a8a3;padding:17px 34px 17px 0}
+body.folio.ab-home .expertise .service-row:after{content:'↗';position:absolute;inset:18px 0 auto auto;background:none;width:auto;height:auto;color:#ad1d25}
+body.folio.ab-home .expertise .service-row h3{color:#232723;font-size:clamp(19px,2vw,29px)}
+body.folio.ab-home .expertise .service-row p{color:#454742}
+@media(max-width:720px){.project-cover{height:clamp(465px,71svh,660px)}.photo-rail{gap:8px;bottom:16px}.photo-rail button{display:grid;align-content:start;font-size:10px;gap:5px}.photo-rail img{width:44px;height:29px}.cover-content{padding-bottom:65px}body.folio .cover-content h1{font-size:clamp(42px,10.8vw,68px)}}
+body.folio header .header-inner button.menu{color:#202020!important;background:#f1f1ed;border:1px solid #c5c7c3}
+body.folio header .header-inner .menu span,body.folio header .header-inner .menu span:before,body.folio header .header-inner .menu span:after{background-color:#252525}
+body.folio header .topbar .social-mini a{background:#333;color:#fff}
+
+/* Continue the closing invitation into the footer in the same brand colour. */
+body.ab-experience main > .cta.wrap:last-child { background: var(--red); }
+body.ab-experience footer .footer-top { border-top: 1px solid rgb(255 255 255 / 34%); }
+
+/* Native-resolution transparent artwork, set in a horizontal lockup. */
+body.folio header .original-flame {width:auto;height:66px;background:none;max-width:none}
+body.folio header .original-name {width:174px;height:auto;max-width:none;background:none}
+body.folio header .signature {gap:6px}
+body.folio header .signature small {font-size:11px}
+body.folio .header-inner {min-height:82px}
+body.folio footer .footer-brand .brand-original {height:118px}
+.project-cover {touch-action:pan-y pinch-zoom}
+@media(max-width:720px){
+  body.folio header .original-flame {height:53px}
+  body.folio header .original-name {width:136px}
+  body.folio header .signature small {font-size:9px}
+  body.folio .header-inner {min-height:67px}
+}
+@media(prefers-reduced-motion:no-preference){
+  .cover-content{animation:cover-arrives .66s .46s ease-out backwards}
+  @keyframes cover-arrives{from{opacity:0;transform:translateY(13px)}}
+  .photo-rail button{position:relative;transition:border-color .32s}
+  .photo-rail button[aria-pressed=true]::before{content:'';position:absolute;left:0;right:0;top:-2px;height:3px;background:#fff;animation:rail-mark .65s ease-out both;transform-origin:left}
+  @keyframes rail-mark{0%{transform:scaleX(0)}100%{transform:scaleX(1);background:var(--red)}}
+  .work-strip .project-card:not([hidden]) .project-card-photo img{animation:project-detail .62s ease-out}
+  @keyframes project-detail{from{opacity:.65;scale:1.035}to{opacity:1;scale:1}}
+}
+@media(prefers-reduced-motion:no-preference){
+  body.folio :is(.button,.cover-link,.gallery-controls button,.photo-rail button,.text-link,button.menu){
+    transition:translate .24s ease,scale .18s ease,box-shadow .24s ease,background-color .24s ease,color .24s ease;
+  }
+  body.folio :is(.button,.cover-link,.gallery-controls button,.photo-rail button,.text-link,button.menu):active{scale:.96}
+  .photo-rail img{transition:scale .35s ease}
+  @media(hover:hover){
+    body.folio :is(.button,.cover-link,.gallery-controls button,button.menu):hover{translate:0 -2px;box-shadow:0 6px 15px #140c1026}
+    .photo-rail button:hover img{scale:1.1}
+    body.folio :is(.service-row,.project-card):hover h3{translate:4px 0}
+    body.folio :is(.service-row,.project-card) h3{transition:translate .3s ease}
+    body.folio :is(nav,footer) a:not(.button):hover{text-decoration:underline;text-underline-offset:4px}
+  }
+}
+
+/* Drawings sit in the margins of light sections, away from the copy. */
+body.folio main {
+  --drawing: url('/assets/section-lines.svg');
+  background-color:#fff;
+  background-image:linear-gradient(90deg,#fff 5%,#ffffffed 34%,#ffffff24 82%),var(--drawing);
+  background-size:auto,720px 420px;
+  background-position:center,right top;
+}
+body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid) {
+  background-color:#fff;
+  background-image:linear-gradient(104deg,#fff 1%,#fffffff0 30%,#ffffff59 73%,#ffffff08),var(--drawing);
+  background-size:auto,720px 420px;
+  background-position:center,right -45px top -84px;
+}
+body.folio .expertise .service-row,body.folio .service-catalog .service-row {
+  background-color:#fffffff2;
+}
+body.folio .photo-rail button[aria-pressed=true]{border-color:var(--red)}
+@media(prefers-reduced-motion:no-preference){
+  body.folio .cover-content{animation:cover-arrives .65s ease-out backwards}
+  body.folio .service-row {transition:box-shadow .35s ease,background-color .35s ease}
+  body.folio .service-row:focus-visible {box-shadow:inset 3px 0 var(--red)}
+  @media(hover:hover){
+    body.folio .service-row:hover {box-shadow:inset 3px 0 var(--red);background-color:#fff}
+    body.folio .service-row:hover h3 {translate:9px 0}
+    body.folio .project-card .project-card-photo img {transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+    body.folio .project-card:hover .project-card-photo img {transform:scale(1.045)}
+    body.folio header nav>a:not(.button){background-image:linear-gradient(var(--red),var(--red));background-repeat:no-repeat;background-size:0 2px;background-position:left bottom;transition:background-size .25s ease}
+    body.folio header nav>a:not(.button):hover{background-size:100% 2px;text-decoration:none}
+  }
+  body.folio :is(.service-row,.project-card):active {box-shadow:inset 3px 0 var(--red)}
+}
+@media(max-width:720px){body.folio main,body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid){background-size:auto,460px auto;background-position:center,right -105px top -30px}}
+
+/* Printed drawing opening: register the mark, then roll the sheet off the photo. */
+.drawing-intro {position:absolute;z-index:4;inset:0;pointer-events:none;display:grid;place-items:center;background:#fbfbf8 var(--drawing) center/720px 420px;animation:drawing-sheet 1.65s cubic-bezier(.65,.02,.3,1) forwards}
+.drawing-intro::before,.drawing-intro::after {content:'';grid-area:1/1;width:clamp(115px,14vw,182px);aspect-ratio:1;border-radius:50%;border:1px dashed #9c9e9e;animation:register-mark .95s ease-out both}
+.drawing-intro::after {width:clamp(100px,12vw,156px);border:2px solid transparent;border-top-color:var(--red);border-bottom-color:var(--red);animation-direction:reverse}
+.drawing-intro img {grid-area:1/1;height:clamp(67px,8vw,104px);width:auto;animation:flame-draw .7s ease-out both}
+@keyframes drawing-sheet {0%,58%{clip-path:inset(0)}100%{clip-path:inset(0 0 100% 0)}}
+@keyframes register-mark {from{transform:rotate(-90deg) scale(1.25);opacity:.1}to{transform:none;opacity:1}}
+@keyframes flame-draw {from{clip-path:inset(100% 0 0)}to{clip-path:inset(0)}}
+body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid) {background-image:linear-gradient(100deg,#ffffffef 0%,#ffffffad 35%,#ffffff15 75%),var(--drawing);background-position:center,right -15px top -35px}
+@media(prefers-reduced-motion:no-preference){
+ body.folio .service-row {background-image:linear-gradient(90deg,var(--red),var(--red));background-position:left bottom;background-size:0 2px;background-repeat:no-repeat;transition:background-size .5s ease,box-shadow .3s ease}
+ body.folio .service-row:is(:hover,:focus-visible,:active){background-size:100% 2px}
+ body.folio .service-row:is(:hover,:focus-visible)::after {translate:3px -3px}
+ body.folio .service-row::after{transition:translate .3s ease}
+ .gallery-controls button:hover {transform:rotate(-7deg)}
+ body.folio .work-strip.ab-enter,body.folio .section-heading.ab-enter {animation-duration:.75s}
+}
+@media(max-width:720px){.drawing-intro{background-size:450px auto}body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid){background-position:center,right -70px top -52px}}
+@media(prefers-reduced-motion:reduce){.drawing-intro{display:none}}
+
+/* Let site photographs occupy the available frame, including on narrow screens. */
+body.folio .photo-rail img {width:clamp(76px,8vw,122px);height:auto;aspect-ratio:1.65}
+body.folio.ab-home .home-projects .project-card:first-child .project-card-photo {height:clamp(420px,46vw,660px)}
+body.folio.ab-home .home-projects .project-card-photo img {object-fit:cover}
+body.ab-experience.folio:not(.ab-home) .project-gallery .photo-button {height:clamp(430px,40vw,620px)}
+body.ab-experience.folio:not(.ab-home) .project-gallery figure:nth-child(5n+1) .photo-button {height:clamp(510px,54vw,790px)}
+@media(max-width:720px){
+  body.folio .photo-rail img {width:100%;height:auto;aspect-ratio:1.45}
+  body.folio.ab-home .home-projects .project-card:first-child .project-card-photo {height:clamp(330px,105vw,550px)}
+  body.ab-experience.folio:not(.ab-home) .project-gallery .photo-button,
+  body.ab-experience.folio:not(.ab-home) .project-gallery figure:nth-child(5n+1) .photo-button {height:auto}
+  body.ab-experience.folio:not(.ab-home) .project-gallery img {display:block;width:100%;height:auto;aspect-ratio:auto}
+  body.ab-experience.folio:not(.ab-home) .service-photo-grid {grid-template-columns:minmax(0,1fr)}
+  body.ab-experience.folio:not(.ab-home) .service-photo-grid .photo-button>img,
+  body.ab-experience.folio:not(.ab-home) .service-photo-grid .photo-button:first-child>img {height:clamp(310px,95vw,530px)}
+}
+body.folio.ab-home .home-projects .project-card:first-child .project-card-photo {width:100%;min-width:0;aspect-ratio:auto}
+@media(max-width:720px){body.folio.ab-home .home-projects .project-card:first-child{grid-template-columns:minmax(0,1fr)}}
+body.folio footer {position:relative;isolation:isolate;overflow:hidden}
+body.folio footer::before {content:'';position:absolute;z-index:-1;right:-4%;bottom:-22%;width:clamp(200px,25vw,420px);aspect-ratio:465/710;background:url('/assets/ab-flame.png') center/contain no-repeat;filter:brightness(0) invert(1);opacity:.055;pointer-events:none}
+body.folio footer .footer-top a:is(.footer-action,.social-action) {display:flex;align-items:center;gap:10px;width:fit-content}
+.footer-action svg {width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.social-action svg {width:17px;height:17px}
+@media(prefers-reduced-motion:no-preference){
+ .drawing-intro{animation-duration:1.12s;will-change:clip-path}
+ .drawing-intro img{animation-duration:.45s}
+ .drawing-intro i{position:absolute;top:50%;left:50%;width:5px;height:11px;border-radius:85% 10% 75% 40%;background:#ce2635;animation:brand-spark .75s ease-out both}
+ @keyframes brand-spark {0%{opacity:0;transform:translate(0,10px) scale(.5)}30%{opacity:.85}100%{opacity:0;transform:translate(calc(var(--side)*35px),-70px) rotate(24deg) scale(.55)}}
+ .footer-action svg,.social-action svg {transition:transform .18s ease-out}
+ .footer-action:is(:hover,:focus-visible) svg,.social-action:is(:hover,:focus-visible) svg {transform:translateY(-2px) rotate(-7deg)}
+ body.folio header .brand:is(:hover,:focus-visible) .original-flame{animation:mark-flicker .38s ease-out;transform-origin:50% 90%}
+ @keyframes mark-flicker{40%{transform:rotate(-3deg) scale(.97,1.045)}75%{transform:rotate(2deg)}}
 }
