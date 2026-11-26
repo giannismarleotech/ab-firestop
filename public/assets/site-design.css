@@ -129,3 +129,42 @@ body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) .eyebrow { border-
   body.ab-experience.ab-home .expertise > .wrap { grid-template-columns: 1fr; }
   body.ab-home .hero-stage h1 { font-size: clamp(34px,8.2vw,46px); }
 }
+
+/* Display the complete supplied logo on a light surface for the black lettering. */
+body.ab-experience header .brand,
+body.ab-experience footer .footer-brand {
+  display: inline-flex; justify-content: center; align-items: center;
+  width: auto; min-width: 0; margin: 0; background: #fff;
+  padding: 3px 13px; border-radius: 3px; line-height: 0;
+}
+body.ab-experience .brand-original { display: block; width: auto; height: 66px; object-fit: contain; filter: none; }
+body.ab-experience footer .brand-original { height: 115px; }
+body.ab-home .hero-stage .hero-content > .eyebrow { display: flex; align-items: center; gap: 9px; border: 0; padding-left: 0; }
+.brand-flame { flex: none; width: 17px; height: 25px; object-fit: contain; transform-origin: 50% 90%; }
+@media (prefers-reduced-motion:no-preference) {
+  .brand-flame { animation: flame-arrival .85s ease-out 1; }
+  @keyframes flame-arrival { 0% { transform: scale(.82) rotate(-8deg); } 60% { transform: scale(1.07) rotate(3deg); } }
+}
+body.ab-experience.ab-home .expertise { padding-block: clamp(27px,4vw,54px); }
+body.ab-experience.ab-home .expertise > .wrap { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 24px; }
+body.ab-experience.ab-home .expertise .section-heading { margin: 0 0 16px; }
+body.ab-experience.ab-home .expertise .section-heading h2 { font-size: clamp(23px,3.1vw,43px); }
+body.ab-experience.ab-home .expertise .service-row {
+  justify-content: center; min-height: 50px; box-shadow: none;
+  background: transparent; border-bottom: 1px solid #d6d8da !important;
+}
+body.ab-experience.ab-home .expertise .service-row > div:not(.service-visual) { padding: 12px 0; }
+body.ab-experience.ab-home .expertise .service-row h3 { margin: 0; font-size: clamp(15px,1.4vw,20px); color: var(--ink); }
+body.ab-experience.ab-home .expertise .service-row:hover h3 { color: var(--red); }
+body.ab-home .home-projects .project-card[hidden] { display: none; }
+body.ab-home .work-strip.wrap { padding-block: clamp(24px,3vw,45px); }
+body.ab-home .home-projects .project-card:first-child .project-card-photo { min-height: 0; height: clamp(200px,23vw,315px); }
+body.ab-home .home-projects .project-card:first-child .project-card-details { padding: clamp(18px,3vw,34px); }
+@media (max-width: 700px) {
+  body.ab-experience header .brand-original { height: 56px; }
+  body.ab-experience.ab-home .expertise > .wrap { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 14px; }
+  body.ab-home .hero-stage .hero-media.hero-media--fire { height: clamp(170px,44vw,250px); }
+  body.ab-home .hero-stage .hero-content { padding-block: 24px; }
+}
+body.ab-experience :is(.brand,.footer-brand) > [hidden],
+body.ab-home main [hidden] { display: none !important; }
