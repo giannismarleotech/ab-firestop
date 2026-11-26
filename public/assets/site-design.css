@@ -444,3 +444,27 @@ body.folio footer .footer-brand .brand-original {height:118px}
   .work-strip .project-card:not([hidden]) .project-card-photo img{animation:project-detail .62s ease-out}
   @keyframes project-detail{from{opacity:.65;scale:1.035}to{opacity:1;scale:1}}
 }
+body.folio .fire-surface {position:relative;isolation:isolate;overflow:hidden}
+body.folio .ambient-fire {
+  display:block;position:absolute;inset:auto -3% -8% auto;width:min(72%,880px);height:94%;
+  object-fit:fill;pointer-events:none;mix-blend-mode:screen;opacity:.10;
+  mask-image:radial-gradient(ellipse 66% 76% at 55% 68%,black 30%,transparent 88%);
+}
+.project-cover .ambient-fire {z-index:-1}
+body.folio main .cta .ambient-fire {z-index:-1;opacity:.075}
+@media(max-width:720px){body.folio .ambient-fire{width:94%;height:72%;right:-17%;bottom:0}}
+@media(prefers-reduced-motion:no-preference){
+  body.folio :is(.button,.cover-link,.gallery-controls button,.photo-rail button,.text-link,button.menu){
+    transition:translate .24s ease,scale .18s ease,box-shadow .24s ease,background-color .24s ease,color .24s ease;
+  }
+  body.folio :is(.button,.cover-link,.gallery-controls button,.photo-rail button,.text-link,button.menu):active{scale:.96}
+  .photo-rail img{transition:scale .35s ease}
+  @media(hover:hover){
+    body.folio :is(.button,.cover-link,.gallery-controls button,button.menu):hover{translate:0 -2px;box-shadow:0 6px 15px #140c1026}
+    .photo-rail button:hover img{scale:1.1}
+    body.folio :is(.service-row,.project-card):hover h3{translate:4px 0}
+    body.folio :is(.service-row,.project-card) h3{transition:translate .3s ease}
+    body.folio :is(nav,footer) a:not(.button):hover{text-decoration:underline;text-underline-offset:4px}
+  }
+}
+@media(prefers-reduced-motion:reduce){body.folio .ambient-fire{display:none}}

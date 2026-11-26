@@ -136,3 +136,59 @@ window.addEventListener('DOMContentLoaded', () => {
     rail.querySelector('[aria-pressed="true"]').focus();
   });
 });
+
+// Decorative motion follows the visitor's viewport and motion preferences.
+window.addEventListener('DOMContentLoaded', () => {
+  if (!document.body.classList.contains('folio')) return;
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const films = new Map();
+  const visible = new Set();
+  const observer = new IntersectionObserver(entries => {
+    for (const {target,isIntersecting} of entries) {
+      if (isIntersecting) visible.add(target);
+      else visible.delete(target);
+      update(target);
+    }
+  });
+  function update(host) {
+    let film = films.get(host);
+    if (document.hidden || preference.matches || !visible.has(host)) {
+      film?.pause();
+      return;
+    }
+    if (!film) {
+      film = document.createElement('video');
+      film.className = 'ambient-fire';
+      film.muted = true;
+      film.defaultMuted = true;
+      film.loop = true;
+      film.playsInline = true;
+      film.disablePictureInPicture = true;
+      film.tabIndex = -1;
+      film.setAttribute('aria-hidden','true');
+      film.src = '/assets/fire-footage.mp4';
+      films.set(host,film);
+      host.prepend(film);
+    }
+    film.play().catch(() => {});
+  }
+  document.querySelectorAll('.project-cover, main > .cta:last-child').forEach(host => {
+    host.classList.add('fire-surface');
+    observer.observe(host);
+  });
+  const refresh = () => visible.forEach(update);
+  preference.addEventListener('change',refresh);
+  document.addEventListener('visibilitychange',refresh);
+
+  const copyObserver = new IntersectionObserver(entries => {
+    for (const {target,isIntersecting} of entries) {
+      if (!isIntersecting) continue;
+      copyObserver.unobserve(target);
+      if (!preference.matches) target.animate([
+        {opacity:.55, translate:'0 12px',clipPath:'inset(0 0 10% 0)'},
+        {opacity:1, translate:'0 0',clipPath:'inset(0)'}
+      ], {duration:620,easing:'cubic-bezier(.2,.75,.22,1)'});
+    }
+  },{threshold:.1});
+  document.querySelectorAll('main h2, main h3, main .lead, main .eyebrow').forEach(el=>copyObserver.observe(el));
+});
