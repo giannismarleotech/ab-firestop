@@ -153,3 +153,20 @@ window.addEventListener('DOMContentLoaded', () => {
   },{threshold:.1});
   document.querySelectorAll('main h2, main h3, main .lead, main .eyebrow').forEach(el=>copyObserver.observe(el));
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  const hero = document.querySelector('.project-cover');
+  const flame = document.querySelector('header .original-flame');
+  if (!hero || !flame || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const intro = document.createElement('div');
+  intro.className = 'drawing-intro';
+  intro.setAttribute('aria-hidden','true');
+  const mark = new Image();
+  mark.src = flame.src;
+  mark.alt = '';
+  intro.append(mark);
+  hero.append(intro);
+  intro.addEventListener('animationend',event=>{
+    if (event.animationName === 'drawing-sheet') intro.remove();
+  });
+});

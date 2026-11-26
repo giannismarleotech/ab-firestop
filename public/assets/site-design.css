@@ -489,3 +489,23 @@ body.folio .photo-rail button[aria-pressed=true]{border-color:var(--red)}
   body.folio :is(.service-row,.project-card):active {box-shadow:inset 3px 0 var(--red)}
 }
 @media(max-width:720px){body.folio main,body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid){background-size:auto,460px auto;background-position:center,right -105px top -30px}}
+
+/* Printed drawing opening: register the mark, then roll the sheet off the photo. */
+.drawing-intro {position:absolute;z-index:4;inset:0;pointer-events:none;display:grid;place-items:center;background:#fbfbf8 var(--drawing) center/720px 420px;animation:drawing-sheet 1.65s cubic-bezier(.65,.02,.3,1) forwards}
+.drawing-intro::before,.drawing-intro::after {content:'';grid-area:1/1;width:clamp(115px,14vw,182px);aspect-ratio:1;border-radius:50%;border:1px dashed #9c9e9e;animation:register-mark .95s ease-out both}
+.drawing-intro::after {width:clamp(100px,12vw,156px);border:2px solid transparent;border-top-color:var(--red);border-bottom-color:var(--red);animation-direction:reverse}
+.drawing-intro img {grid-area:1/1;height:clamp(67px,8vw,104px);width:auto;animation:flame-draw .7s ease-out both}
+@keyframes drawing-sheet {0%,58%{clip-path:inset(0)}100%{clip-path:inset(0 0 100% 0)}}
+@keyframes register-mark {from{transform:rotate(-90deg) scale(1.25);opacity:.1}to{transform:none;opacity:1}}
+@keyframes flame-draw {from{clip-path:inset(100% 0 0)}to{clip-path:inset(0)}}
+body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid) {background-image:linear-gradient(100deg,#ffffffef 0%,#ffffffad 35%,#ffffff15 75%),var(--drawing);background-position:center,right -15px top -35px}
+@media(prefers-reduced-motion:no-preference){
+ body.folio .service-row {background-image:linear-gradient(90deg,var(--red),var(--red));background-position:left bottom;background-size:0 2px;background-repeat:no-repeat;transition:background-size .5s ease,box-shadow .3s ease}
+ body.folio .service-row:is(:hover,:focus-visible,:active){background-size:100% 2px}
+ body.folio .service-row:is(:hover,:focus-visible)::after {translate:3px -3px}
+ body.folio .service-row::after{transition:translate .3s ease}
+ .gallery-controls button:hover {transform:rotate(-7deg)}
+ body.folio .work-strip.ab-enter,body.folio .section-heading.ab-enter {animation-duration:.75s}
+}
+@media(max-width:720px){.drawing-intro{background-size:450px auto}body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid){background-position:center,right -70px top -52px}}
+@media(prefers-reduced-motion:reduce){.drawing-intro{display:none}}
