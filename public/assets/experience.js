@@ -32,20 +32,19 @@ window.addEventListener('DOMContentLoaded', () => {
   const original = brand.querySelector('.brand-original');
   if (!original) return;
   document.body.classList.add('folio');
-  // Both fragments reference the original transparent artwork, including its lettering.
-  function fragment(className) {
-    const span = document.createElement('span');
-    span.className = className;
-    span.style.backgroundImage = 'url("' + original.src + '")';
-    span.setAttribute('aria-hidden','true');
-    return span;
+  function fragment(className, file) {
+    const image = new Image();
+    image.className = className;
+    image.alt = '';
+    image.src = new URL(file,original.src).href;
+    return image;
   }
   const signature = document.createElement('span');
   signature.className = 'signature';
   const slogan = document.createElement('small');
   slogan.textContent = 'Fire Protection Sealing Services';
-  signature.append(fragment('original-name'),slogan);
-  brand.append(fragment('original-flame'),signature);
+  signature.append(fragment('original-name','ab-wordmark.png'),slogan);
+  brand.append(fragment('original-flame','ab-flame.png'),signature);
   const home = document.querySelector('.hero-stage');
   if (!home) return;
   const cards = [...document.querySelectorAll('.home-projects .project-card')];
@@ -90,7 +89,10 @@ window.addEventListener('DOMContentLoaded', () => {
     background.alt = picture.alt;
     projectLink.href = card.href;
     choices.forEach(({button},idx)=>button.setAttribute('aria-pressed',String(i===idx)));
-    if (!reduced.matches) background.animate([{opacity:.7,scale:1.035},{opacity:1,scale:1}],{duration:680,easing:'ease-out'});
+    if (!reduced.matches) {
+      background.getAnimations().forEach(animation => animation.cancel());
+      background.animate([{filter:'brightness(.65)', transform:'scale(1.055)'},{filter:'brightness(1)', transform:'scale(1)'}],{duration:700,easing:'cubic-bezier(.2,.75,.2,1)'});
+    }
   }
   for (const [key,name,n] of selections) {
     const card = [...projects.values()].find(c=>c.href.includes(key));
@@ -108,5 +110,29 @@ window.addEventListener('DOMContentLoaded', () => {
     choices.push({card,picture,button});
     rail.append(button);
   }
-  if(choices.length)select(0);
+  if (!choices.length) return;
+  select(0);
+  let touch;
+  frame.addEventListener('touchstart', event => {
+    touch = event.touches.length === 1 ? event.touches[0] : null;
+  }, {passive:true});
+  frame.addEventListener('touchcancel', () => { touch = null; });
+  function advance(offset) {
+    const index = choices.findIndex(({button}) => button.getAttribute('aria-pressed') === 'true');
+    select((index + offset + choices.length) % choices.length);
+  }
+  frame.addEventListener('touchend', event => {
+    if (!touch) return;
+    const end = event.changedTouches[0];
+    const dx = end.clientX - touch.clientX;
+    const dy = end.clientY - touch.clientY;
+    touch = null;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > 1.5 * Math.abs(dy)) advance(dx < 0 ? 1 : -1);
+  }, {passive:true});
+  rail.addEventListener('keydown', event => {
+    if (!['ArrowRight','ArrowLeft'].includes(event.key)) return;
+    event.preventDefault();
+    advance(event.key === 'ArrowRight' ? 1 : -1);
+    rail.querySelector('[aria-pressed="true"]').focus();
+  });
 });

@@ -417,3 +417,30 @@ body.folio header .topbar .social-mini a{background:#333;color:#fff}
 /* Continue the closing invitation into the footer in the same brand colour. */
 body.ab-experience main > .cta.wrap:last-child { background: var(--red); }
 body.ab-experience footer .footer-top { border-top: 1px solid rgb(255 255 255 / 34%); }
+
+/* Native-resolution transparent artwork, set in a horizontal lockup. */
+body.folio header .original-flame {width:auto;height:66px;background:none;max-width:none}
+body.folio header .original-name {width:174px;height:auto;max-width:none;background:none}
+body.folio header .signature {gap:6px}
+body.folio header .signature small {font-size:11px}
+body.folio .header-inner {min-height:82px}
+body.folio footer .footer-brand .brand-original {height:118px}
+.project-cover {touch-action:pan-y pinch-zoom}
+@media(max-width:720px){
+  body.folio header .original-flame {height:53px}
+  body.folio header .original-name {width:136px}
+  body.folio header .signature small {font-size:9px}
+  body.folio .header-inner {min-height:67px}
+}
+/* The collar closes around the opening, then reveals the site photograph. */
+@media(prefers-reduced-motion:no-preference){
+  .project-cover::before {content:'';position:absolute;pointer-events:none;z-index:2;inset:0;background:radial-gradient(circle at 70% 42%,transparent 0 4.9vmax,#c81724 5vmax 6.1vmax,#3a3e40 6.2vmax 7.5vmax,#ddd 7.55vmax 7.65vmax,#191d20 7.7vmax);animation:collar-open 1.25s cubic-bezier(.42,0,.19,1) both;transform-origin:70% 42%}
+  @keyframes collar-open {0%{transform:scale(1.5);opacity:1}22%{transform:scale(.82);opacity:1}78%{opacity:.85}100%{transform:scale(23);opacity:0;visibility:hidden}}
+  .cover-content{animation:cover-arrives .66s .46s ease-out backwards}
+  @keyframes cover-arrives{from{opacity:0;transform:translateY(13px)}}
+  .photo-rail button{position:relative;transition:border-color .32s}
+  .photo-rail button[aria-pressed=true]::before{content:'';position:absolute;left:0;right:0;top:-2px;height:3px;background:#fff;animation:rail-mark .65s ease-out both;transform-origin:left}
+  @keyframes rail-mark{0%{transform:scaleX(0)}100%{transform:scaleX(1);background:var(--red)}}
+  .work-strip .project-card:not([hidden]) .project-card-photo img{animation:project-detail .62s ease-out}
+  @keyframes project-detail{from{opacity:.65;scale:1.035}to{opacity:1;scale:1}}
+}
