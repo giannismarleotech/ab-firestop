@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" fill="none">
+ <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M-2 2 2-2M0 8 8 0M6 10l4-4" stroke="#606b70" stroke-opacity=".24" stroke-width=".7"/></pattern></defs>
+ <g stroke="#576469" stroke-opacity=".26" stroke-width=".85">
+ <path d="M-15 330h250a34 34 0 0 0 24-10l120-120a34 34 0 0 1 24-10h338M-15 339h251a42 42 0 0 0 30-12l120-120a25 25 0 0 1 18-8h337"/>
+ <path d="M419-10v113a17 17 0 0 0 5 12l104 104a17 17 0 0 1 5 12v204h15V226a20 20 0 0 0-6-14L439 109a18 18 0 0 1-5-13V-10Z" fill="url(#hatch)"/>
+ <circle cx="540" cy="195" r="61"/><circle cx="540" cy="195" r="52"/><circle cx="540" cy="195" r="43" stroke-dasharray="3 6"/>
+ <path d="M459 195h162m-81-81v162M345 262l52 52h97" stroke-dasharray="8 5 2 5"/>
+ <path d="M485 309v10m-3-5h12M150 325v18m-4-5 8-8"/>
+ </g>
+ <g stroke="#be1725" stroke-opacity=".45" stroke-width="1.3"><path d="M540 134a61 61 0 0 1 43 18M229 339h9"/><circle cx="398" cy="314" r="2"/></g>
+</svg>

@@ -141,45 +141,6 @@ window.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('DOMContentLoaded', () => {
   if (!document.body.classList.contains('folio')) return;
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  const films = new Map();
-  const visible = new Set();
-  const observer = new IntersectionObserver(entries => {
-    for (const {target,isIntersecting} of entries) {
-      if (isIntersecting) visible.add(target);
-      else visible.delete(target);
-      update(target);
-    }
-  });
-  function update(host) {
-    let film = films.get(host);
-    if (document.hidden || preference.matches || !visible.has(host)) {
-      film?.pause();
-      return;
-    }
-    if (!film) {
-      film = document.createElement('video');
-      film.className = 'ambient-fire';
-      film.muted = true;
-      film.defaultMuted = true;
-      film.loop = true;
-      film.playsInline = true;
-      film.disablePictureInPicture = true;
-      film.tabIndex = -1;
-      film.setAttribute('aria-hidden','true');
-      film.src = '/assets/fire-footage.mp4';
-      films.set(host,film);
-      host.prepend(film);
-    }
-    film.play().catch(() => {});
-  }
-  document.querySelectorAll('.project-cover, main > .cta:last-child').forEach(host => {
-    host.classList.add('fire-surface');
-    observer.observe(host);
-  });
-  const refresh = () => visible.forEach(update);
-  preference.addEventListener('change',refresh);
-  document.addEventListener('visibilitychange',refresh);
-
   const copyObserver = new IntersectionObserver(entries => {
     for (const {target,isIntersecting} of entries) {
       if (!isIntersecting) continue;

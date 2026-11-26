@@ -432,10 +432,7 @@ body.folio footer .footer-brand .brand-original {height:118px}
   body.folio header .signature small {font-size:9px}
   body.folio .header-inner {min-height:67px}
 }
-/* The collar closes around the opening, then reveals the site photograph. */
 @media(prefers-reduced-motion:no-preference){
-  .project-cover::before {content:'';position:absolute;pointer-events:none;z-index:2;inset:0;background:radial-gradient(circle at 70% 42%,transparent 0 4.9vmax,#c81724 5vmax 6.1vmax,#3a3e40 6.2vmax 7.5vmax,#ddd 7.55vmax 7.65vmax,#191d20 7.7vmax);animation:collar-open 1.25s cubic-bezier(.42,0,.19,1) both;transform-origin:70% 42%}
-  @keyframes collar-open {0%{transform:scale(1.5);opacity:1}22%{transform:scale(.82);opacity:1}78%{opacity:.85}100%{transform:scale(23);opacity:0;visibility:hidden}}
   .cover-content{animation:cover-arrives .66s .46s ease-out backwards}
   @keyframes cover-arrives{from{opacity:0;transform:translateY(13px)}}
   .photo-rail button{position:relative;transition:border-color .32s}
@@ -444,15 +441,6 @@ body.folio footer .footer-brand .brand-original {height:118px}
   .work-strip .project-card:not([hidden]) .project-card-photo img{animation:project-detail .62s ease-out}
   @keyframes project-detail{from{opacity:.65;scale:1.035}to{opacity:1;scale:1}}
 }
-body.folio .fire-surface {position:relative;isolation:isolate;overflow:hidden}
-body.folio .ambient-fire {
-  display:block;position:absolute;inset:auto -3% -8% auto;width:min(72%,880px);height:94%;
-  object-fit:fill;pointer-events:none;mix-blend-mode:screen;opacity:.10;
-  mask-image:radial-gradient(ellipse 66% 76% at 55% 68%,black 30%,transparent 88%);
-}
-.project-cover .ambient-fire {z-index:-1}
-body.folio main .cta .ambient-fire {z-index:-1;opacity:.075}
-@media(max-width:720px){body.folio .ambient-fire{width:94%;height:72%;right:-17%;bottom:0}}
 @media(prefers-reduced-motion:no-preference){
   body.folio :is(.button,.cover-link,.gallery-controls button,.photo-rail button,.text-link,button.menu){
     transition:translate .24s ease,scale .18s ease,box-shadow .24s ease,background-color .24s ease,color .24s ease;
@@ -467,4 +455,37 @@ body.folio main .cta .ambient-fire {z-index:-1;opacity:.075}
     body.folio :is(nav,footer) a:not(.button):hover{text-decoration:underline;text-underline-offset:4px}
   }
 }
-@media(prefers-reduced-motion:reduce){body.folio .ambient-fire{display:none}}
+
+/* Drawings sit in the margins of light sections, away from the copy. */
+body.folio main {
+  --drawing: url('/assets/section-lines.svg');
+  background-color:#fff;
+  background-image:linear-gradient(90deg,#fff 5%,#ffffffed 34%,#ffffff24 82%),var(--drawing);
+  background-size:auto,720px 420px;
+  background-position:center,right top;
+}
+body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid) {
+  background-color:#fff;
+  background-image:linear-gradient(104deg,#fff 1%,#fffffff0 30%,#ffffff59 73%,#ffffff08),var(--drawing);
+  background-size:auto,720px 420px;
+  background-position:center,right -45px top -84px;
+}
+body.folio .expertise .service-row,body.folio .service-catalog .service-row {
+  background-color:#fffffff2;
+}
+body.folio .photo-rail button[aria-pressed=true]{border-color:var(--red)}
+@media(prefers-reduced-motion:no-preference){
+  body.folio .cover-content{animation:cover-arrives .65s ease-out backwards}
+  body.folio .service-row {transition:box-shadow .35s ease,background-color .35s ease}
+  body.folio .service-row:focus-visible {box-shadow:inset 3px 0 var(--red)}
+  @media(hover:hover){
+    body.folio .service-row:hover {box-shadow:inset 3px 0 var(--red);background-color:#fff}
+    body.folio .service-row:hover h3 {translate:9px 0}
+    body.folio .project-card .project-card-photo img {transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+    body.folio .project-card:hover .project-card-photo img {transform:scale(1.045)}
+    body.folio header nav>a:not(.button){background-image:linear-gradient(var(--red),var(--red));background-repeat:no-repeat;background-size:0 2px;background-position:left bottom;transition:background-size .25s ease}
+    body.folio header nav>a:not(.button):hover{background-size:100% 2px;text-decoration:none}
+  }
+  body.folio :is(.service-row,.project-card):active {box-shadow:inset 3px 0 var(--red)}
+}
+@media(max-width:720px){body.folio main,body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid){background-size:auto,460px auto;background-position:center,right -105px top -30px}}
