@@ -171,9 +171,9 @@ body.ab-home main [hidden] { display: none !important; }
 
 /* AB Firestop red with a reversed mark and high-contrast links. */
 body.ab-experience footer {
-  background: #b51925;
+  background: var(--red);
   color: #fff;
-  border-top: 1px solid #a21520;
+  border-top: 0;
 }
 body.ab-experience footer .footer-top {
   grid-template-columns: minmax(150px,.85fr) minmax(205px,1fr) minmax(245px,1.23fr) minmax(90px,.52fr);
@@ -413,3 +413,7 @@ body.folio.ab-home .expertise .service-row p{color:#454742}
 body.folio header .header-inner button.menu{color:#202020!important;background:#f1f1ed;border:1px solid #c5c7c3}
 body.folio header .header-inner .menu span,body.folio header .header-inner .menu span:before,body.folio header .header-inner .menu span:after{background-color:#252525}
 body.folio header .topbar .social-mini a{background:#333;color:#fff}
+
+/* Continue the closing invitation into the footer in the same brand colour. */
+body.ab-experience main > .cta.wrap:last-child { background: var(--red); }
+body.ab-experience footer .footer-top { border-top: 1px solid rgb(255 255 255 / 34%); }
