@@ -6,7 +6,7 @@ const controls = {
 
 export function applySiteDesign($, lang) {
   applyBrand($);
-  $('head').append('<link rel="stylesheet" href="/assets/site-design.css?v=2">');
+  $('head').append('<link rel="stylesheet" href="/assets/site-design.css?v=3">');
   const media = $('.hero-stage .hero-media');
   if (media.length) {
     compactHome($);
@@ -44,7 +44,6 @@ function applyBrand($) {
 function compactHome($) {
   $('main > .intro, main > .photo-story, main > .systems-section, main > .why, main > .process-band, main > .document-callout, main > .faq, .hero-points').attr('hidden', '');
   $('.expertise .section-heading > p, .expertise .section-heading h2 br, .expertise .section-heading h2 br ~ cms-text').attr('hidden', '');
-  $('.expertise .service-row .service-visual, .expertise .service-row p').attr('hidden', '');
   $('.hero-content > .eyebrow').prepend('<img class="brand-flame" src="/assets/beeldmerk.png" alt="" width="17" height="25">');
   $('.work-strip .project-card').slice(1).attr('hidden', '');
 }
