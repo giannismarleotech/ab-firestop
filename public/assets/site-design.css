@@ -253,43 +253,6 @@ body.ab-experience.ab-home .expertise .service-row:focus-visible { outline: 3px 
   body.ab-experience.ab-home .expertise .service-row p { display: none; }
 }
 
-/* Arrange the original flame and the two lines of original lettering horizontally. */
-body.ab-experience header .brand,
-body.ab-experience footer .footer-brand {
-  --lettering-width: clamp(145px,13vw,180px);
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 9px;
-  width: fit-content;
-  max-width: 100%;
-  background: transparent;
-  padding: 0;
-}
-body.ab-experience header .brand::before,
-body.ab-experience footer .footer-brand::before {
-  content: "";
-  display: block;
-  flex: 0 0 34px;
-  width: 34px;
-  height: 50px;
-  position: static;
-  background: #fff;
-  mask: url('/assets/beeldmerk.png') center / contain no-repeat;
-}
-body.ab-experience header .brand-original,
-body.ab-experience footer .footer-brand .brand-original {
-  /* Source lettering and slogan occupy the bottom 150 of its 954 pixels. */
-  display: block;
-  flex: none;
-  width: var(--lettering-width);
-  height: calc(var(--lettering-width) * .19);
-  max-width: none;
-  object-fit: cover;
-  object-position: center bottom;
-  filter: brightness(0) invert(1);
-}
 body.ab-experience footer .footer-top {
   grid-template-columns: minmax(220px,1.1fr) minmax(185px,1fr) minmax(205px,1.2fr) minmax(85px,.55fr);
 }
@@ -311,32 +274,6 @@ body.ab-experience footer .footer-top > div:first-child > p br { display: initia
   body.ab-experience footer .footer-top { row-gap: 16px; }
   body.ab-experience footer .footer-top a:not(.footer-brand) { min-height: 32px; }
 }
-/* Keep the signature line readable independently of the raster wordmark size. */
-body.ab-experience :is(header .brand, footer .footer-brand) {
-  display: inline-grid;
-  grid-template-columns: 34px auto;
-  grid-template-rows: auto auto;
-  gap: 3px 9px;
-  align-content: center;
-}
-body.ab-experience :is(header .brand, footer .footer-brand)::before { grid-area: 1 / 1 / 3 / 2; }
-body.ab-experience header .brand-original,
-body.ab-experience footer .footer-brand .brand-original {
-  grid-area: 1 / 2;
-  align-self: end;
-  height: calc(var(--lettering-width) * .105);
-  object-position: center 92.3%;
-}
-body.ab-experience :is(header .brand, footer .footer-brand)::after {
-  content: "Fire Protection Sealing Services";
-  grid-area: 2 / 2;
-  align-self: start;
-  position: static; width: auto; height: auto;
-  color: #fff; background: transparent;
-  font: 600 11px/1.3 'Manrope', Arial, sans-serif;
-  letter-spacing: 0; text-transform: none;
-}
-
 body.ab-home .new-hero .hero-stage .actions a.button.outline {
   color: #20242a; background: #fff; border: 1px solid #aeb3b8;
   border-left: 3px solid var(--red); padding: 14px 16px;
@@ -398,4 +335,40 @@ body.ab-home .hero-stage .wrap.hero-content {
 }
 @media (max-width:800px) {
   body.ab-home .hero-stage .wrap.hero-content { padding: 38px 5vw 82px !important; }
+}
+
+/* A light ground preserves every colour and line of the supplied master artwork. */
+body.ab-experience header .brand,
+body.ab-experience footer .footer-brand {
+  display: inline-flex; width: fit-content; align-items: center; justify-content: center;
+  padding: 5px 14px; background: #fff; border-radius: 2px;
+}
+body.ab-experience header .brand .brand-original,
+body.ab-experience footer .footer-brand .brand-original {
+  display: block; height: 66px; width: auto; object-fit: contain; filter: none;
+}
+body.ab-experience footer .footer-brand .brand-original { height: 100px; }
+@media (max-width: 1100px) {
+  body.ab-experience header .brand .brand-original { height: 54px; }
+}
+.work-strip .gallery-controls {
+  display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 14px;
+}
+.gallery-controls button {
+  width: 44px; height: 44px; border: 1px solid #acb0b3; border-radius: 50%;
+  background: #fff; color: #191c21; font: 24px/1 Arial,sans-serif; cursor: pointer;
+}
+.gallery-controls output { font: 600 14px/1.4 Manrope,Arial,sans-serif; color: #343a40; }
+.gallery-controls button:is(:hover,:focus-visible) { background: #9e1822; color: white; }
+.ab-home .home-projects,.ab-home .hero-stage { touch-action: pan-y pinch-zoom; }
+@media (prefers-reduced-motion:no-preference) {
+  header .brand-original { animation: brand-arrive .65s ease-out both; }
+  @keyframes brand-arrive { from { opacity: .6; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+  body.ab-experience :is(.brand-original,.service-visual img,.project-card-photo img,.project-gallery img) {
+    transition: transform .42s cubic-bezier(.2,.7,.3,1);
+  }
+  @media (hover:hover) {
+    body.ab-experience :is(.brand,.footer-brand):hover .brand-original { scale: 1.035; }
+    body.ab-experience :is(.service-row,.project-card,.project-gallery figure):hover img { transform: scale(1.035); }
+  }
 }
