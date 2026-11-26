@@ -337,17 +337,18 @@ body.ab-home .hero-stage .wrap.hero-content {
   body.ab-home .hero-stage .wrap.hero-content { padding: 38px 5vw 82px !important; }
 }
 
-/* A light ground preserves every colour and line of the supplied master artwork. */
+/* Reverse the original artwork against the header and the red footer. */
 body.ab-experience header .brand,
 body.ab-experience footer .footer-brand {
   display: inline-flex; width: fit-content; align-items: center; justify-content: center;
-  padding: 5px 14px; background: #fff; border-radius: 2px;
+  padding: 5px 14px; background: transparent; border-radius: 0;
 }
 body.ab-experience header .brand .brand-original,
 body.ab-experience footer .footer-brand .brand-original {
-  display: block; height: 66px; width: auto; object-fit: contain; filter: none;
+  display: block; height: 66px; width: auto; object-fit: contain;
+  filter: invert(1) hue-rotate(180deg) saturate(2);
 }
-body.ab-experience footer .footer-brand .brand-original { height: 100px; }
+body.ab-experience footer .footer-brand .brand-original { height: 100px; filter: brightness(0) invert(1); }
 @media (max-width: 1100px) {
   body.ab-experience header .brand .brand-original { height: 54px; }
 }
