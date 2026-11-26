@@ -168,3 +168,52 @@ body.ab-home .home-projects .project-card:first-child .project-card-details { pa
 }
 body.ab-experience :is(.brand,.footer-brand) > [hidden],
 body.ab-home main [hidden] { display: none !important; }
+
+/* A light footer keeps the original black and red mark on its natural ground. */
+body.ab-experience footer {
+  background: #fafaf8;
+  color: #252830;
+  border-top: 1px solid #d9d9d5;
+}
+body.ab-experience footer .footer-top {
+  grid-template-columns: minmax(150px,.85fr) minmax(205px,1fr) minmax(245px,1.23fr) minmax(90px,.52fr);
+  gap: clamp(20px,3.4vw,58px);
+  padding-block: clamp(30px,4vw,58px);
+}
+body.ab-experience footer .footer-top > div:first-child {
+  grid-column: auto;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;
+  gap: 12px; border: 0; padding: 0;
+}
+body.ab-experience footer .footer-brand { background: transparent; padding: 0; }
+body.ab-experience footer .brand-original { height: 94px; }
+body.ab-experience footer .footer-top > div:first-child > p,
+body.ab-experience footer p { color: #50545b; margin: 8px 0 0; font-size: 14px; line-height: 1.55; }
+body.ab-experience footer h3 {
+  color: #20242a; font-size: 15px; text-transform: none; letter-spacing: 0;
+  border-left: 3px solid #c81724; padding-left: 10px; margin: 4px 0 12px;
+}
+body.ab-experience footer .footer-top > div > a:not(.footer-brand) { color: #343940; font-size: 14px; }
+body.ab-experience footer .footer-top > div:nth-child(2) > a {
+  font-size: clamp(16px,1.55vw,22px); color: #9e1822; font-weight: 650;
+}
+body.ab-experience footer .footer-top a:hover,
+body.ab-experience footer .footer-bottom a:hover { color: #9e1822; text-decoration: underline; }
+body.ab-experience footer .footer-explore { column-gap: 14px; }
+body.ab-experience footer .company-vat { font-size: 12px; }
+body.ab-experience footer .footer-bottom {
+  color: #555b60; border-color: #d8d9d5; padding-block: 12px;
+}
+body.ab-experience footer .footer-bottom a { color: #343940; }
+body.ab-experience footer :focus-visible { outline-color: #a22029; }
+@media (max-width: 900px) {
+  body.ab-experience footer .footer-top { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+  body.ab-experience footer .footer-top > div:nth-child(n) { grid-column: auto; grid-row: auto; }
+}
+@media (max-width: 600px) {
+  body.ab-experience footer .footer-top { grid-template-columns: minmax(0,1fr) minmax(0,1.15fr); gap: 20px 14px; }
+  body.ab-experience footer .brand-original { height: 82px; }
+  body.ab-experience footer .footer-top > div:first-child > p { font-size: 12px; }
+  body.ab-experience footer .footer-explore { display: block; }
+  body.ab-experience footer .footer-top > div:nth-child(4) { align-self: start; }
+}
