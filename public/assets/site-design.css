@@ -356,3 +356,46 @@ body.ab-experience:not(.ab-home) .detail-image .steel-graphic {
 }
 body.ab-experience:not(.ab-home) .detail-image .steel-graphic > span { font-size: clamp(84px,10vw,145px); }
 body.ab-experience:not(.ab-home) .detail-image .steel-graphic b { font-size: clamp(20px,2.2vw,28px); line-height: 1.2; }
+
+/* One uninterrupted project photograph behind the introduction. */
+body.ab-home .hero-stage {
+  display: grid; grid-template-columns: minmax(0,1fr); isolation: isolate;
+  min-height: clamp(460px,40vw,600px); background: #202426;
+}
+body.ab-home .hero-stage .hero-media.hero-media--fire {
+  position: absolute; inset: 0; grid-area: auto; width: 100%; height: 100%;
+  min-height: 0; clip-path: none; overflow: hidden;
+}
+body.ab-home .hero-stage .hero-media::after {
+  background: linear-gradient(90deg,rgba(9,13,17,.9) 0%,rgba(9,13,17,.79) 38%,rgba(9,13,17,.26) 74%,rgba(9,13,17,.08) 100%);
+}
+body.ab-home .hero-stage .hero-content {
+  width: min(100%,740px); margin: 0; align-self: center; justify-self: start;
+  padding: clamp(40px,5vw,80px) clamp(22px,4vw,64px); pointer-events: none;
+}
+body.ab-home .hero-stage .hero-content a { pointer-events: auto; }
+body.ab-home .hero-stage .hero-content :is(.eyebrow,h1,h1 em,.lead) { color: white; }
+body.ab-home .hero-stage .brand-flame { filter: brightness(0) invert(1); }
+body.ab-home .hero-stage .hero-background { transform-origin: 64% 45%; }
+@media (prefers-reduced-motion:no-preference) {
+  body.ab-home .hero-stage .hero-media > .hero-background { animation: ab-photo-settle 3.8s cubic-bezier(.2,.7,.3,1) both; }
+  @keyframes ab-photo-settle { from { transform: scale(1.055); } to { transform: scale(1); } }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.ab-home .hero-stage .hero-media > .hero-background { animation: none; transform: none; }
+}
+@media (max-width:800px) {
+  body.ab-home .hero-stage { min-height: 380px; }
+  body.ab-home .hero-stage .hero-content { padding: 42px 5vw 84px; }
+  body.ab-home .hero-stage .hero-media::after {
+    background: linear-gradient(90deg,rgba(9,13,17,.84),rgba(9,13,17,.62)),
+      linear-gradient(0deg,rgba(9,13,17,.16),transparent);
+  }
+  body.ab-home .hero-stage .project-pager { bottom: 14px; }
+}
+body.ab-home .hero-stage .wrap.hero-content {
+  padding: clamp(40px,5vw,80px) clamp(22px,4vw,64px) !important;
+}
+@media (max-width:800px) {
+  body.ab-home .hero-stage .wrap.hero-content { padding: 38px 5vw 82px !important; }
+}
