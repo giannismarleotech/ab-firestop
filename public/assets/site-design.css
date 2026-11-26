@@ -509,3 +509,22 @@ body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact
 }
 @media(max-width:720px){.drawing-intro{background-size:450px auto}body.folio main :is(.expertise,.work-strip,.service-list,.service-depth,.contact-grid,.detail-grid){background-position:center,right -70px top -52px}}
 @media(prefers-reduced-motion:reduce){.drawing-intro{display:none}}
+
+/* Let site photographs occupy the available frame, including on narrow screens. */
+body.folio .photo-rail img {width:clamp(76px,8vw,122px);height:auto;aspect-ratio:1.65}
+body.folio.ab-home .home-projects .project-card:first-child .project-card-photo {height:clamp(420px,46vw,660px)}
+body.folio.ab-home .home-projects .project-card-photo img {object-fit:cover}
+body.ab-experience.folio:not(.ab-home) .project-gallery .photo-button {height:clamp(430px,40vw,620px)}
+body.ab-experience.folio:not(.ab-home) .project-gallery figure:nth-child(5n+1) .photo-button {height:clamp(510px,54vw,790px)}
+@media(max-width:720px){
+  body.folio .photo-rail img {width:100%;height:auto;aspect-ratio:1.45}
+  body.folio.ab-home .home-projects .project-card:first-child .project-card-photo {height:clamp(330px,105vw,550px)}
+  body.ab-experience.folio:not(.ab-home) .project-gallery .photo-button,
+  body.ab-experience.folio:not(.ab-home) .project-gallery figure:nth-child(5n+1) .photo-button {height:auto}
+  body.ab-experience.folio:not(.ab-home) .project-gallery img {display:block;width:100%;height:auto;aspect-ratio:auto}
+  body.ab-experience.folio:not(.ab-home) .service-photo-grid {grid-template-columns:minmax(0,1fr)}
+  body.ab-experience.folio:not(.ab-home) .service-photo-grid .photo-button>img,
+  body.ab-experience.folio:not(.ab-home) .service-photo-grid .photo-button:first-child>img {height:clamp(310px,95vw,530px)}
+}
+body.folio.ab-home .home-projects .project-card:first-child .project-card-photo {width:100%;min-width:0;aspect-ratio:auto}
+@media(max-width:720px){body.folio.ab-home .home-projects .project-card:first-child{grid-template-columns:minmax(0,1fr)}}

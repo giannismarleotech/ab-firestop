@@ -170,3 +170,9 @@ window.addEventListener('DOMContentLoaded', () => {
     if (event.animationName === 'drawing-sheet') intro.remove();
   });
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+  for (const image of document.querySelectorAll('.project-gallery .photo-button[data-image] img')) {
+    image.srcset = image.closest('.photo-button').dataset.image;
+  }
+});
