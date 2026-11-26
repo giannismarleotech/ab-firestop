@@ -43,8 +43,8 @@ window.addEventListener('DOMContentLoaded', () => {
   signature.className = 'signature';
   const slogan = document.createElement('small');
   slogan.textContent = 'Fire Protection Sealing Services';
-  signature.append(fragment('original-name','ab-wordmark.png'),slogan);
-  brand.append(fragment('original-flame','ab-flame.png'),signature);
+  signature.append(fragment('original-name','ab-wordmark.svg'),slogan);
+  brand.append(fragment('original-flame','ab-flame.svg'),signature);
   const home = document.querySelector('.hero-stage');
   if (!home) return;
   const cards = [...document.querySelectorAll('.home-projects .project-card')];
@@ -216,4 +216,27 @@ window.addEventListener('DOMContentLoaded', () => {
     const icon = source?.querySelector('svg')?.cloneNode(true);
     if (icon) { link.prepend(icon);link.classList.add('social-action'); }
   }
+});
+
+// Animate on arrival so links, history and opening a new tab retain native behaviour.
+window.addEventListener('pageshow', event => {
+  if (!document.body.classList.contains('folio') ||
+      matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const returning = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
+  const internal = document.referrer && new URL(document.referrer).origin === location.origin;
+  if (!event.persisted && !returning && !internal) return;
+  const mark = document.querySelector('header .original-flame');
+  if (!mark) return;
+  document.querySelector('.page-flame')?.remove();
+  const flash = document.createElement('span');
+  flash.className = 'page-flame';
+  flash.setAttribute('aria-hidden','true');
+  const icon = new Image();
+  icon.src = mark.src;
+  icon.alt = '';
+  flash.append(icon);
+  document.body.append(flash);
+  flash.addEventListener('animationend', e=>{
+    if (e.target === flash) flash.remove();
+  });
 });

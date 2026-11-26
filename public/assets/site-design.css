@@ -543,3 +543,13 @@ body.folio footer .footer-top a:is(.footer-action,.social-action) {display:flex;
  body.folio header .brand:is(:hover,:focus-visible) .original-flame{animation:mark-flicker .38s ease-out;transform-origin:50% 90%}
  @keyframes mark-flicker{40%{transform:rotate(-3deg) scale(.97,1.045)}75%{transform:rotate(2deg)}}
 }
+
+body.folio header .brand :is(.original-name,.original-flame) {transition:filter .18s ease-out}
+body.folio header .brand:is(:hover,:focus-visible) .original-name {filter:brightness(0) saturate(100%) invert(15%) sepia(98%) saturate(3926%) hue-rotate(345deg) brightness(88%)}
+body.folio header .brand:is(:hover,:focus-visible) .original-flame {filter:brightness(0)}
+.page-flame {position:fixed;z-index:90;right:clamp(12px,3vw,48px);bottom:clamp(16px,4vh,48px);pointer-events:none;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#fff;box-shadow:0 4px 22px #16141933;animation:page-flame-pass .68s ease-in-out both}
+.page-flame img {height:38px;width:auto}
+.page-flame::before {position:absolute;inset:3px;border-radius:50%;border:1px solid #d8d8d8;border-top:2px solid var(--red);content:'';animation:page-flame-ring .68s ease-out both}
+@keyframes page-flame-pass {0%{opacity:0;transform:translateY(7px) scale(.82)}20%,70%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-6px) scale(.94)}}
+@keyframes page-flame-ring {to{transform:rotate(210deg)}}
+@media(prefers-reduced-motion:reduce){.page-flame{display:none}}
