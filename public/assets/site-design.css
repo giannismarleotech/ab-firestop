@@ -351,3 +351,8 @@ body.ab-experience:not(.ab-home) .detail-grid .steel-graphic :is(b,small) {
 body.ab-experience header .header-inner nav > a[aria-current],
 body.ab-experience header .header-inner nav > a.active { color: #ffbcc2; }
 body.ab-experience header .header-inner nav > a:not(.button):hover { color: #ffbcc2; }
+body.ab-experience:not(.ab-home) .detail-image .steel-graphic {
+  height: 100%; gap: 12px; padding: 16px; justify-content: center;
+}
+body.ab-experience:not(.ab-home) .detail-image .steel-graphic > span { font-size: clamp(84px,10vw,145px); }
+body.ab-experience:not(.ab-home) .detail-image .steel-graphic b { font-size: clamp(20px,2.2vw,28px); line-height: 1.2; }
