@@ -85,20 +85,21 @@ window.addEventListener('DOMContentLoaded', () => {
   const choices = [];
   function select(i) {
     const {picture,card} = choices[i];
-    background.src = picture.src;
+    background.src = picture.dataset.full;
     background.alt = picture.alt;
     projectLink.href = card.href;
     choices.forEach(({button},idx)=>button.setAttribute('aria-pressed',String(i===idx)));
     if (!reduced.matches) {
       background.getAnimations().forEach(animation => animation.cancel());
-      background.animate([{filter:'brightness(.65)', transform:'scale(1.055)'},{filter:'brightness(1)', transform:'scale(1)'}],{duration:700,easing:'cubic-bezier(.2,.75,.2,1)'});
+      background.animate([{filter:'brightness(.65)', transform:'scale(1.055)'},{filter:'brightness(1)', transform:'scale(1)'}],{duration:430,easing:'cubic-bezier(.2,.75,.2,1)'});
     }
   }
   for (const [key,name,n] of selections) {
     const card = [...projects.values()].find(c=>c.href.includes(key));
     if (!card) continue;
     const picture = new Image();
-    picture.src = new URL(key+'-'+n+'.webp',card.querySelector('img').src).href;
+    picture.dataset.full = new URL(key+'-'+n+'.webp',card.querySelector('img').src).href;
+    picture.src = picture.dataset.full.replace('.webp','-thumb.webp');
     picture.alt = card.querySelector('img').alt;
     const button = document.createElement('button');
     button.type='button';
@@ -148,7 +149,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (!preference.matches) target.animate([
         {opacity:.55, translate:'0 12px',clipPath:'inset(0 0 10% 0)'},
         {opacity:1, translate:'0 0',clipPath:'inset(0)'}
-      ], {duration:620,easing:'cubic-bezier(.2,.75,.22,1)'});
+      ], {duration:390,easing:'cubic-bezier(.2,.75,.22,1)'});
     }
   },{threshold:.1});
   document.querySelectorAll('main h2, main h3, main .lead, main .eyebrow').forEach(el=>copyObserver.observe(el));
@@ -158,6 +159,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const hero = document.querySelector('.project-cover');
   const flame = document.querySelector('header .original-flame');
   if (!hero || !flame || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  try {
+    if (sessionStorage.getItem('ab-drawing-seen')) return;
+    sessionStorage.setItem('ab-drawing-seen','1');
+  } catch {}
   const intro = document.createElement('div');
   intro.className = 'drawing-intro';
   intro.setAttribute('aria-hidden','true');
@@ -165,6 +170,11 @@ window.addEventListener('DOMContentLoaded', () => {
   mark.src = flame.src;
   mark.alt = '';
   intro.append(mark);
+  for (const offset of [-1,0,1]) {
+    const spark = document.createElement('i');
+    spark.style.setProperty('--side',offset);
+    intro.append(spark);
+  }
   hero.append(intro);
   intro.addEventListener('animationend',event=>{
     if (event.animationName === 'drawing-sheet') intro.remove();
@@ -174,5 +184,36 @@ window.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('DOMContentLoaded', () => {
   for (const image of document.querySelectorAll('.project-gallery .photo-button[data-image] img')) {
     image.srcset = image.closest('.photo-button').dataset.image;
+  }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  const footer = document.querySelector('footer');
+  const mail = footer?.querySelector('a[href^="mailto:"]');
+  const phone = document.querySelector('header a[href^="tel:"]');
+  if (!mail || !phone) return;
+  const call = document.createElement('a');
+  call.href = phone.href;
+  call.textContent = phone.textContent.trim();
+  mail.after(call);
+  const paths = [
+    'M3 5h18v14H3z M3 6l9 7 9-7',
+    'M6 3l4 4-2 3c1 3 3 5 6 6l3-2 4 4-2 3C11 22 2 13 3 5z'
+  ];
+  [mail,call].forEach((link,index)=>{
+    const ns = 'http://www.w3.org/2000/svg';
+    const icon = document.createElementNS(ns,'svg');
+    const path = document.createElementNS(ns,'path');
+    icon.setAttribute('viewBox','0 0 24 24');
+    icon.setAttribute('aria-hidden','true');
+    path.setAttribute('d',paths[index]);
+    icon.append(path);
+    link.classList.add('footer-action');
+    link.prepend(icon);
+  });
+  for (const link of footer.querySelectorAll('a[target="_blank"]')) {
+    const source = [...document.querySelectorAll('header .social-mini a')].find(a=>a.href===link.href);
+    const icon = source?.querySelector('svg')?.cloneNode(true);
+    if (icon) { link.prepend(icon);link.classList.add('social-action'); }
   }
 });

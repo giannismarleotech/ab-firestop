@@ -528,3 +528,18 @@ body.ab-experience.folio:not(.ab-home) .project-gallery figure:nth-child(5n+1) .
 }
 body.folio.ab-home .home-projects .project-card:first-child .project-card-photo {width:100%;min-width:0;aspect-ratio:auto}
 @media(max-width:720px){body.folio.ab-home .home-projects .project-card:first-child{grid-template-columns:minmax(0,1fr)}}
+body.folio footer {position:relative;isolation:isolate;overflow:hidden}
+body.folio footer::before {content:'';position:absolute;z-index:-1;right:-4%;bottom:-22%;width:clamp(200px,25vw,420px);aspect-ratio:465/710;background:url('/assets/ab-flame.png') center/contain no-repeat;filter:brightness(0) invert(1);opacity:.055;pointer-events:none}
+body.folio footer .footer-top a:is(.footer-action,.social-action) {display:flex;align-items:center;gap:10px;width:fit-content}
+.footer-action svg {width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.social-action svg {width:17px;height:17px}
+@media(prefers-reduced-motion:no-preference){
+ .drawing-intro{animation-duration:1.12s;will-change:clip-path}
+ .drawing-intro img{animation-duration:.45s}
+ .drawing-intro i{position:absolute;top:50%;left:50%;width:5px;height:11px;border-radius:85% 10% 75% 40%;background:#ce2635;animation:brand-spark .75s ease-out both}
+ @keyframes brand-spark {0%{opacity:0;transform:translate(0,10px) scale(.5)}30%{opacity:.85}100%{opacity:0;transform:translate(calc(var(--side)*35px),-70px) rotate(24deg) scale(.55)}}
+ .footer-action svg,.social-action svg {transition:transform .18s ease-out}
+ .footer-action:is(:hover,:focus-visible) svg,.social-action:is(:hover,:focus-visible) svg {transform:translateY(-2px) rotate(-7deg)}
+ body.folio header .brand:is(:hover,:focus-visible) .original-flame{animation:mark-flicker .38s ease-out;transform-origin:50% 90%}
+ @keyframes mark-flicker{40%{transform:rotate(-3deg) scale(.97,1.045)}75%{transform:rotate(2deg)}}
+}
