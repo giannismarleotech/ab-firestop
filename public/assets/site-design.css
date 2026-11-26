@@ -130,14 +130,14 @@ body.ab-experience:not(.ab-home) :is(.page-head,.detail-head) .eyebrow { border-
   body.ab-home .hero-stage h1 { font-size: clamp(34px,8.2vw,46px); }
 }
 
-/* Display the complete supplied logo on a light surface for the black lettering. */
+/* Preserve the transparent silhouette on coloured surfaces. */
 body.ab-experience header .brand,
 body.ab-experience footer .footer-brand {
   display: inline-flex; justify-content: center; align-items: center;
-  width: auto; min-width: 0; margin: 0; background: #fff;
-  padding: 3px 13px; border-radius: 3px; line-height: 0;
+  width: auto; min-width: 0; margin: 0; background: transparent;
+  padding: 3px 0; border-radius: 3px; line-height: 0;
 }
-body.ab-experience .brand-original { display: block; width: auto; height: 66px; object-fit: contain; filter: none; }
+body.ab-experience .brand-original { display: block; width: auto; height: 66px; object-fit: contain; filter: brightness(0) invert(1); }
 body.ab-experience footer .brand-original { height: 115px; }
 body.ab-home .hero-stage .hero-content > .eyebrow { display: flex; align-items: center; gap: 9px; border: 0; padding-left: 0; }
 .brand-flame { flex: none; width: 17px; height: 25px; object-fit: contain; transform-origin: 50% 90%; }
@@ -169,11 +169,11 @@ body.ab-home .home-projects .project-card:first-child .project-card-details { pa
 body.ab-experience :is(.brand,.footer-brand) > [hidden],
 body.ab-home main [hidden] { display: none !important; }
 
-/* A light footer keeps the original black and red mark on its natural ground. */
+/* AB Firestop red with a reversed mark and high-contrast links. */
 body.ab-experience footer {
-  background: #fafaf8;
-  color: #252830;
-  border-top: 1px solid #d9d9d5;
+  background: #b51925;
+  color: #fff;
+  border-top: 1px solid #a21520;
 }
 body.ab-experience footer .footer-top {
   grid-template-columns: minmax(150px,.85fr) minmax(205px,1fr) minmax(245px,1.23fr) minmax(90px,.52fr);
@@ -188,24 +188,24 @@ body.ab-experience footer .footer-top > div:first-child {
 body.ab-experience footer .footer-brand { background: transparent; padding: 0; }
 body.ab-experience footer .brand-original { height: 94px; }
 body.ab-experience footer .footer-top > div:first-child > p,
-body.ab-experience footer p { color: #50545b; margin: 8px 0 0; font-size: 14px; line-height: 1.55; }
+body.ab-experience footer p { color: #fff4f4; margin: 8px 0 0; font-size: 14px; line-height: 1.55; }
 body.ab-experience footer h3 {
-  color: #20242a; font-size: 15px; text-transform: none; letter-spacing: 0;
-  border-left: 3px solid #c81724; padding-left: 10px; margin: 4px 0 12px;
+  color: #fff; font-size: 15px; text-transform: none; letter-spacing: 0;
+  border-left: 3px solid #ffb8bd; padding-left: 10px; margin: 4px 0 12px;
 }
-body.ab-experience footer .footer-top > div > a:not(.footer-brand) { color: #343940; font-size: 14px; }
+body.ab-experience footer .footer-top > div > a:not(.footer-brand) { color: #fff; font-size: 14px; }
 body.ab-experience footer .footer-top > div:nth-child(2) > a {
-  font-size: clamp(16px,1.55vw,22px); color: #9e1822; font-weight: 650;
+  font-size: clamp(16px,1.55vw,22px); color: #fff; font-weight: 650;
 }
 body.ab-experience footer .footer-top a:hover,
-body.ab-experience footer .footer-bottom a:hover { color: #9e1822; text-decoration: underline; }
+body.ab-experience footer .footer-bottom a:hover { color: #fff; text-decoration: underline; }
 body.ab-experience footer .footer-explore { column-gap: 14px; }
 body.ab-experience footer .company-vat { font-size: 12px; }
 body.ab-experience footer .footer-bottom {
-  color: #555b60; border-color: #d8d9d5; padding-block: 12px;
+  color: #fff4f4; border-color: #ffffff50; padding-block: 12px;
 }
-body.ab-experience footer .footer-bottom a { color: #343940; }
-body.ab-experience footer :focus-visible { outline-color: #a22029; }
+body.ab-experience footer .footer-bottom a { color: #fff; }
+body.ab-experience footer :focus-visible { outline-color: #fff; }
 @media (max-width: 900px) {
   body.ab-experience footer .footer-top { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
   body.ab-experience footer .footer-top > div:nth-child(n) { grid-column: auto; grid-row: auto; }
@@ -216,4 +216,39 @@ body.ab-experience footer :focus-visible { outline-color: #a22029; }
   body.ab-experience footer .footer-top > div:first-child > p { font-size: 12px; }
   body.ab-experience footer .footer-explore { display: block; }
   body.ab-experience footer .footer-top > div:nth-child(4) { align-self: start; }
+}
+
+/* Short service cards use the project images already associated with each link. */
+body.ab-experience.ab-home .expertise > .wrap { gap: 12px; }
+body.ab-experience.ab-home .expertise .service-row {
+  display: grid; grid-template-columns: clamp(60px,6vw,86px) minmax(0,1fr);
+  align-items: stretch; justify-content: stretch; gap: 0;
+  background: #fff; border: 1px solid #dededb !important;
+}
+body.ab-experience.ab-home .expertise .service-visual {
+  position: relative; inset: auto; grid-area: 1 / 1; z-index: auto;
+  height: 100%; min-height: 87px; width: 100%; overflow: hidden;
+}
+body.ab-experience.ab-home .expertise .service-visual::after { content: none; }
+body.ab-experience.ab-home .expertise .service-visual img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+body.ab-experience.ab-home .expertise .service-row > div:not(.service-visual) {
+  grid-area: 1 / 2; align-self: center; padding: 12px;
+}
+body.ab-experience.ab-home .expertise .service-row p {
+  display: block; margin: 4px 0 0; color: #565b60; font-size: 13px; line-height: 1.4;
+}
+body.ab-experience.ab-home .expertise .service-row:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+@media (max-width: 980px) {
+  body.ab-experience.ab-home .expertise > .wrap { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  body.ab-experience.ab-home .expertise > .wrap { gap: 8px; }
+  body.ab-experience.ab-home .expertise .service-row {
+    grid-template-columns: 1fr; grid-template-rows: 64px auto;
+  }
+  body.ab-experience.ab-home .expertise .service-visual { grid-area: 1 / 1; min-height: 0; }
+  body.ab-experience.ab-home .expertise .service-row > div:not(.service-visual) { grid-area: 2 / 1; padding: 9px; }
+  body.ab-experience.ab-home .expertise .service-row p { display: none; }
 }
